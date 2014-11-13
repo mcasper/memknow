@@ -3,7 +3,10 @@ class CreateFlashcards < ActiveRecord::Migration
     create_table :flashcards do |t|
       t.string :question, null: false
       t.string :answer, null: false
-      t.belongs_to :user
+      t.integer :difficulty
+      t.integer :repetitions
+      t.datetime :last_studied
+      t.belongs_to :user, null: false
       t.belongs_to :deck
       t.belongs_to :scheduled_review
 

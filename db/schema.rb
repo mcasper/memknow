@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20141113060314) do
   create_table "flashcards", force: true do |t|
     t.string   "question",            null: false
     t.string   "answer",              null: false
-    t.integer  "user_id"
+    t.integer  "difficulty"
+    t.integer  "repetitions"
+    t.datetime "last_studied"
+    t.integer  "user_id",             null: false
     t.integer  "deck_id"
     t.integer  "scheduled_review_id"
     t.datetime "created_at",          null: false
