@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113063245) do
+ActiveRecord::Schema.define(version: 20141113070441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "flashcards", force: true do |t|
-    t.string   "question",            null: false
-    t.string   "answer",              null: false
-    t.integer  "difficulty"
-    t.integer  "user_id",             null: false
+    t.string   "question",                          null: false
+    t.string   "answer",                            null: false
+    t.decimal  "difficulty",          default: 2.5
+    t.integer  "user_id",                           null: false
     t.integer  "deck_id"
     t.integer  "scheduled_review_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "flashcards", ["deck_id"], name: "index_flashcards_on_deck_id", using: :btree
