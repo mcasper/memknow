@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113060314) do
+ActiveRecord::Schema.define(version: 20141113063245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 20141113060314) do
     t.string   "question",            null: false
     t.string   "answer",              null: false
     t.integer  "difficulty"
-    t.integer  "repetitions"
-    t.datetime "last_studied"
     t.integer  "user_id",             null: false
     t.integer  "deck_id"
     t.integer  "scheduled_review_id"
@@ -32,6 +30,15 @@ ActiveRecord::Schema.define(version: 20141113060314) do
   add_index "flashcards", ["deck_id"], name: "index_flashcards_on_deck_id", using: :btree
   add_index "flashcards", ["scheduled_review_id"], name: "index_flashcards_on_scheduled_review_id", using: :btree
   add_index "flashcards", ["user_id"], name: "index_flashcards_on_user_id", using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.string   "proposed_answer"
+    t.integer  "quality"
+    t.date     "review_date"
+    t.integer  "flashcard_id",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "scheduled_reviews", force: true do |t|
     t.datetime "scheduled_time"
