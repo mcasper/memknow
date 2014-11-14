@@ -34,9 +34,7 @@ class Flashcard < ActiveRecord::Base
       if quality == 3
         interval = 0
       else
-        new = self.repetitions + 1
-
-        case new
+        case self.repetitions
         when 1
           interval = 1
         when 2

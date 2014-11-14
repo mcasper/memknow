@@ -7,6 +7,10 @@ RSpec.describe Flashcard do
       review = FactoryGirl.create(:review, flashcard: flashcard, quality: 4)
 
       expect(flashcard.calculate_next_study).to eq(1)
+
+      review2 = FactoryGirl.create(:review, flashcard: flashcard, quality: 4)
+
+      expect(flashcard.calculate_next_study).to eq(6)
     end
   end
 end
