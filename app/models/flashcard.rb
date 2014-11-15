@@ -11,6 +11,8 @@
 #  scheduled_review_id :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  repetitions         :integer          default("0")
+#  last_interval       :integer          default("0")
 #
 
 class Flashcard < ActiveRecord::Base
@@ -22,9 +24,7 @@ class Flashcard < ActiveRecord::Base
 
   validates :question, :answer, presence: true
 
-  # Easiness factor between 1.3 and 2.5, 2.5 being the easiest and 1.3 most difficult
-
-  def calculate_next_study
+  def calculate_next_review
     if quality < 3
       self.repetitions = 0
       interval = 0
@@ -34,31 +34,23 @@ class Flashcard < ActiveRecord::Base
       if quality == 3
         interval = 0
       else
-        case self.repetitions
+        case repetitions
         when 1
           interval = 1
         when 2
           interval = 6
         else
-          interval = interval * new_difficulty
+          interval = self.last_interval * new_difficulty
         end
       end
     end
 
-    scheduled_review = Date.today + interval
-    interval
+    self.scheduled_review = ScheduledReview.create(scheduled_date: Date.today + interval.to_i, user: User.first)
+    self.last_interval = interval.to_i
   end
 
   def difficulty_to_f
     difficulty.to_f
-  end
-
-  def repetitions
-    reviews.count
-  end
-
-  def last_studied
-    reviews.last.review_date
   end
 
   def quality

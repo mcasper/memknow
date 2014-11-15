@@ -15,4 +15,10 @@ class Review < ActiveRecord::Base
   belongs_to :flashcard
 
   validates :flashcard, presence: true
+
+  after_create :set_repetitions
+
+  def set_repetitions
+    flashcard.repetitions += 1
+  end
 end
