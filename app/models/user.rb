@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  first_name             :text             not null
+#  first_name             :text
 #  last_name              :text
 #  is_admin               :boolean          default("false"), not null
 #  created_at             :datetime         not null
@@ -27,6 +27,4 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :flashcards
   has_many :scheduled_reviews
-
-  validates :first_name, :login, :password, :is_admin, presence: true
 end
