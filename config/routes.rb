@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   resources :flashcards
   resources :scheduled_reviews, only: [:show]
+  resources :reviews, only: [:create]
 end

@@ -49,6 +49,20 @@ class Flashcard < ActiveRecord::Base
     self.last_interval = interval.to_i
   end
 
+  def schedule_next_review(interval, current_user)
+    scheduled_date = Date.today + interval
+    future_review = current_user.scheduled_reviews.where(scheduled_date: scheduled_date).first
+
+    if future_review
+      future_review.flashcards << self
+    else
+      new_review = current_user.scheduled_reviews.create(scheduled_date: scheduled_date)
+      new_review.flashcards << self
+    end
+  end
+
+  private
+
   def difficulty_to_f
     difficulty.to_f
   end
