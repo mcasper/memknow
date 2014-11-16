@@ -16,8 +16,8 @@ FactoryGirl.define do
   factory :user do
     first_name "Matt"
     last_name "Casper"
-    login "mattcasper@example.com"
+    email "mattcasper@example.com"
     password "password"
-    is_admin true
+    is_admin false
   end
 end

@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe FlashcardsController do
-  let!(:user) { FactoryGirl.create(:user) }
+  login_user
 
   describe "GET #show" do
     it "returns a flashcard" do
-      flashcard = FactoryGirl.create(:flashcard, user: user)
+      flashcard = FactoryGirl.create(:flashcard, user: User.first)
 
       get :show, id: flashcard.id
 
@@ -34,7 +34,7 @@ RSpec.describe FlashcardsController do
 
   describe "PUT #update" do
     it "updates a flashcard" do
-      flashcard = FactoryGirl.create(:flashcard, user: user)
+      flashcard = FactoryGirl.create(:flashcard, user: User.first)
 
       put :update, id: flashcard.id, flashcard: { last_interval: 6, repetitions: 3 }
 
@@ -45,7 +45,7 @@ RSpec.describe FlashcardsController do
 
   describe "DELETE #destroy" do
     it "destroys a flashcard" do
-      flashcard = FactoryGirl.create(:flashcard, user: user)
+      flashcard = FactoryGirl.create(:flashcard, user: User.first)
 
       delete :destroy, id: flashcard.id
 
