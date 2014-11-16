@@ -1,1 +1,3 @@
 <%= render template: "flashcards/new" %>
+<%= link_to "My Flashcards", flashcards_path %>
+<%= link_to "Flashcards to review", scheduled_review_path(current_scheduled_review) %>

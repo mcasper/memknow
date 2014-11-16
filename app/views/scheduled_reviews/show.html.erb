@@ -1,0 +1,12 @@
+<table>
+<tr>
+  <td> Question </td>
+</tr>
+<tbody>
+  <% @scheduled_review.flashcards.each do |flashcard| %>
+    <tr>
+      <td> <%= flashcard.question %> </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

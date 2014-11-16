@@ -1,0 +1,14 @@
+<table>
+<tr>
+  <td> Question </td>
+  <td> Answer </td>
+</tr>
+<tbody>
+  <% @flashcards.each do |flashcard| %>
+    <tr>
+      <td> <%= flashcard.question %> </td>
+      <td> <%= flashcard.answer %> </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

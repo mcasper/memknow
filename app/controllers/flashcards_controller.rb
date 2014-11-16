@@ -1,4 +1,8 @@
 class FlashcardsController < ApplicationController
+  def index
+    @flashcards = current_user.flashcards
+  end
+
   def show
     @flashcard = current_user.flashcards.find(params[:id])
   end
@@ -11,6 +15,7 @@ class FlashcardsController < ApplicationController
     @flashcard = current_user.flashcards.new(flashcard_params)
 
     if @flashcard.save
+      create_scheduled_review
       render :show
     else
       render :json, { errors: @flashcard.errors }, status: :unprocessible_entity
@@ -35,6 +40,11 @@ class FlashcardsController < ApplicationController
   end
 
   private
+
+  def create_scheduled_review
+    scheduled_review = current_user.scheduled_reviews.create(scheduled_date: Date.today)
+    @flashcard.update_attributes(scheduled_review: scheduled_review)
+  end
 
   def flashcard_params
     params.require(:flashcard).permit(
