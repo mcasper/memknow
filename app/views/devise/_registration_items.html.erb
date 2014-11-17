@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
-  <li>
     <%= link_to("Edit Registration", edit_user_registration_path, method: :delete) %>
-  </li>
 <% else %>
-  <li>
-    <%= link_to("Register", new_user_registration_path)  %>
-  </li>
+	<li>
+	<%= link_to new_user_registration_path do %>
+		Register<i class="sub_icon glyphicon glyphicon-plus"></i>
+	</li>
+	<% end %>
 <% end %>
