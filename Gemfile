@@ -3,6 +3,9 @@ ruby "2.1.2"
 
 gem "rails", "4.2.0.beta4"
 
+gem "bootstrap-sass", "~> 3.2.0"
+gem "autoprefixer-rails"
+
 gem "awesome_print"
 gem "devise"
 gem "jquery-rails"
