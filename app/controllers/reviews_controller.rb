@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
 
       head :ok
     else
-      render json: { errors: @review.errors }, status: :unprocessible_entity 
+      render :new
     end
   end
 

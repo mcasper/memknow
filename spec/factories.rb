@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  sequence :email do |n|
+    "user#{n}@example.com"
+  end
+
   factory :flashcard do
     question "What is the meaning of life, the universe, and everyhing?"
     answer "Why, 42 of course"
@@ -16,9 +20,9 @@ FactoryGirl.define do
   factory :user do
     first_name "Matt"
     last_name "Casper"
-    email "mattcasper5@example.com"
+    email
     password "password"
-    is_admin false
+    password_confirmation "password"
   end
 
   factory :scheduled_review do

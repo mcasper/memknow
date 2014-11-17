@@ -14,6 +14,12 @@
 #  repetitions         :integer          default("0")
 #  last_interval       :integer          default("0")
 #
+# Indexes
+#
+#  index_flashcards_on_deck_id              (deck_id)
+#  index_flashcards_on_scheduled_review_id  (scheduled_review_id)
+#  index_flashcards_on_user_id              (user_id)
+#
 
 class Flashcard < ActiveRecord::Base
   belongs_to :user
