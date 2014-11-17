@@ -2,22 +2,16 @@
 <html>
 <head>
   <title>Memknow</title>
-  <%= stylesheet_link_tag    "application", "sidebar", "main", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", "main", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "sidebar", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <div class="container">
-	<div class="row">
-		<%= render 'devise/banner' %>
-	</div>
-
-	<div class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-4"></div>
-		<div class="col-md-3"></div>
-	</div>
+	
+	<%= render 'devise/banner' %>
+	<%= render 'devise/infographic' %>
 
 	<div class="row">
 		<% if user_signed_in? %>
