@@ -9,11 +9,24 @@
 <body>
 
 <div class="container">
-	<%= render 'devise/banner' %>
-	<%= render 'devise/sidebar' %>
+	<div class="row">
+		<%= render 'devise/banner' %>
+	</div>
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-3"></div>
+		<div class="col-md-4">Dirty</div>
+		<div class="col-md-3"></div>
+	</div>
+
+	<div class="row">
+		<% if user_signed_in? %>
+			<%= render 'devise/sidebar' %>
+			<div class="col-md-1"></div>
+		<% else %>
+			<div class="col-md-4"></div>
+		<% end %>
+		<div class="col-md-4" style="border: 1px solid black">
 			<%= yield %>
 		</div>
 	</div>
