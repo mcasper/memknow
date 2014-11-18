@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.1.2"
+ruby "2.1.5"
 
 gem "rails", "4.2.0.beta4"
 
@@ -7,9 +7,9 @@ gem "bootstrap-sass", "~> 3.2.0"
 gem "autoprefixer-rails"
 
 gem "awesome_print"
-gem "devise"
 gem "jquery-rails"
 gem "pg"
+gem "bcrypt"
 gem "pry-rails"
 gem "rails-html-sanitizer", "~> 1.0"
 gem "slim"

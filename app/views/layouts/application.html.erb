@@ -8,14 +8,11 @@
 </head>
 <body>
 
-<div class="container">
-	
-	<%= render 'devise/banner' %>
-	<%= render 'devise/infographic' %>
+<%= yield %>
 
 	<div class="row">
 		<% if user_signed_in? %>
-			<%= render 'devise/sidebar' %>
+			<%= render 'sidebar' %>
 			<div class="col-md-1"></div>
 		<% else %>
 			<div class="col-md-4"></div>

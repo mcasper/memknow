@@ -8,6 +8,10 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
+# Indexes
+#
+#  index_scheduled_reviews_on_user_id  (user_id)
+#
 
 class ScheduledReview < ActiveRecord::Base
   belongs_to :user

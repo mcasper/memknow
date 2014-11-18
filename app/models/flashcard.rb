@@ -14,6 +14,12 @@
 #  repetitions         :integer          default("0")
 #  last_interval       :integer          default("0")
 #
+# Indexes
+#
+#  index_flashcards_on_deck_id              (deck_id)
+#  index_flashcards_on_scheduled_review_id  (scheduled_review_id)
+#  index_flashcards_on_user_id              (user_id)
+#
 
 class Flashcard < ActiveRecord::Base
   belongs_to :user
@@ -48,6 +54,20 @@ class Flashcard < ActiveRecord::Base
     self.scheduled_review = ScheduledReview.create(scheduled_date: Date.today + interval.to_i, user: User.first)
     self.last_interval = interval.to_i
   end
+
+  def schedule_next_review(interval, current_user)
+    scheduled_date = Date.today + interval
+    future_review = current_user.scheduled_reviews.where(scheduled_date: scheduled_date).first
+
+    if future_review
+      future_review.flashcards << self
+    else
+      new_review = current_user.scheduled_reviews.create(scheduled_date: scheduled_date)
+      new_review.flashcards << self
+    end
+  end
+
+  private
 
   def difficulty_to_f
     difficulty.to_f
