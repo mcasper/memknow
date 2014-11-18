@@ -43,7 +43,7 @@ class FlashcardsController < ApplicationController
 
   def create_scheduled_review
     scheduled_review = current_user.scheduled_reviews.create(scheduled_date: Date.today)
-    @flashcard.update_attributes(scheduled_review: scheduled_review)
+    scheduled_review.flashcards << @flashcard
   end
 
   def flashcard_params
