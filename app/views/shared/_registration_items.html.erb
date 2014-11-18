@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+    <%= link_to("Edit Registration", edit_user_registration_path, method: :delete) %>
+<% else %>
+	<li>
+	<%= link_to new_user_registration_path do %>
+		Register<i class="glyphicon glyphicon-plus"></i>
+	</li>
+	<% end %>
+<% end %>

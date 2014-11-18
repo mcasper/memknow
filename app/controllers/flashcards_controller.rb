@@ -18,7 +18,7 @@ class FlashcardsController < ApplicationController
       create_scheduled_review
       render :show
     else
-      render :json, { errors: @flashcard.errors }, status: :unprocessible_entity
+      redirect_to :new
     end
   end
 
@@ -28,7 +28,7 @@ class FlashcardsController < ApplicationController
     if @flashcard.update_attributes(flashcard_params)
       render :show
     else
-      render :json, { errors: @flashcard.errors }, status: :unprocessible_entity
+      redirect_to :new
     end
   end
 
