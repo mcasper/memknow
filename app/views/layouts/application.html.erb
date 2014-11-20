@@ -13,8 +13,16 @@
 
       <%= render 'shared/banner' %>
       <%= render 'shared/infographic' %>
+      <br/>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <%= render 'shared/flashcard_items' %>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
 
-      <%= render'shared/registration_items' %>
+      <br/>
 
       <div class="row">
         <% if !current_user = GuestUser %>

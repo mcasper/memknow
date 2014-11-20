@@ -1,0 +1,15 @@
+<%= form_for :flashcard, url: flashcards_path do |f| %>
+	
+	<div class="registration-error"></div>
+
+	<div class=" field form-group">
+		<%= f.label :question %>
+    	<%= f.text_field :question, class: 'form-control' %>
+	</div>
+
+  	<div class="field form-group">
+    	<%= f.label :answer %>
+    	<%= f.text_area :answer, class: 'form-control' %>
+  	</div>
+
+<% end %>
