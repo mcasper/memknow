@@ -15,11 +15,12 @@
       <%= render 'shared/infographic' %>
 
       <div class="row">
-        <% if signed_in? %>
+        <% if !current_user = GuestUser %>
           <%= render 'shared/sidebar' %>
           <div class="col-md-1"></div>
         <% else %>
-          <div class="col-md-4"></div>
+          <div class="col-md-4">
+          </div>
         <% end %>
         <div class="col-md-4">
           <%= yield %>
