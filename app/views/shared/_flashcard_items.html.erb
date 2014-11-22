@@ -2,14 +2,16 @@
 	
 	<div class="registration-error"></div>
 
-	<div class=" field form-group">
-		<%= f.label :question %>
-    	<%= f.text_field :question, class: 'form-control' %>
-	</div>
+	<div class="well">
+		<div class=" field form-group">
+			<%= f.label :question %>
+	    	<%= f.text_field :question, class: 'form-control' %>
+		</div>
 
-  	<div class="field form-group">
-    	<%= f.label :answer %>
-    	<%= f.text_area :answer, class: 'form-control' %>
+	  	<div class="field form-group">
+	    	<%= f.label :answer %>
+	    	<%= f.text_area :answer, class: 'form-control' %>
+	  	</div>
   	</div>
 
 <% end %>
