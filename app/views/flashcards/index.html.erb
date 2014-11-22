@@ -1,14 +1,14 @@
-<table>
-<tr>
-  <td> Question </td>
-  <td> Answer </td>
-</tr>
-<tbody>
-  <% @flashcards.each do |flashcard| %>
-    <tr>
-      <td> <%= flashcard.question %> </td>
-      <td> <%= flashcard.answer %> </td>
-    </tr>
-  <% end %>
-</tbody>
-</table>
+<% @flashcards.each do |flashcard| %>
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+	<div class="flipper">
+		<div class="front">
+			<h2>Question</h2>
+			<%= flashcard.question %>
+		</div>
+		<div class="back">
+			<h2>Answer</h2>
+			<%= flashcard.answer %>
+		</div>
+	</div>
+</div>
+<% end %>
