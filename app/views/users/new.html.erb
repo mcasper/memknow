@@ -1,24 +1,29 @@
 <div class="row">
-	<div class="col-md-3"></div>
-	<div class="col-md-6">
-		<%= form_for :flashcard, url: flashcards_path do |f| %>
-			<div class="registration-error"></div>
-
-			<div class="well">
-				<div class=" field form-group">
+	<div class="col-md-4"></div>
+	<div class="col-md-4 col-xs-12">
+		<div class="flip-container">
+			<div class="flipper">
+				<%= form_for :flashcard, url: flashcards_path do |f| %>
+				<div class="front well">
+					<h2>Write your question here</h2>
 					<%= f.label :question %>
-			    	<%= f.text_field :question, class: 'form-control' %>
+					<%= f.text_field :question, class: 'form-control' %>
 				</div>
-
-			  	<div class="field form-group">
-			    	<%= f.label :answer %>
-			    	<%= f.text_area :answer, class: 'form-control' %>
-			  	</div>
-		  	</div>
-		<% end %>
+				<div class="back well">
+					<h2>And write your answer here</h2>
+					<p>*hint: pull on the bottom right corner of the text box for more room!</p>
+					<%= f.label :answer %>
+					<%= f.text_area :answer, class: 'form-control' %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+		<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success">Flip over</button>
 	</div>
-	<div class="col-md-3"></div>
+	<div class="col-md-4"></div>
 </div>
+
+
 
 <div class="row">
 	<div class="col-md-4"></div>
@@ -26,7 +31,7 @@
 		<h2>Start Studying Now!</h2>
 		<%= form_for :user, url: users_path do |f| %>
 			<%# if statement for error message %>
-				<div id="registration-error"></div>
+			<div id="registration-error"></div>
 			<%# end %>
 			
 			<div class="field form-group">
