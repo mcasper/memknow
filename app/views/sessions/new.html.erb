@@ -1,18 +1,24 @@
-<h2>Sign in</h2>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 well">
+    <h2>Sign in</h2>
+    <%= form_for :session, url: signin_path do |f| %>
+      <div class="registration-error"></div>
 
-<%= form_for :session, url: signin_path do |f| %>
-  <div class="registration-error"></div>
+      <div class="field form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
 
-  <div class="field form-group">
-    <%= f.label :email %>
-    <%= f.text_field :email, class: "form-control" %>
-  </div>
+      <div class="field form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
 
-  <div class="field form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control" %>
-  </div>
-
-  <%= f.submit "Login" %>
-
-<% end %>
+      <%= f.submit "Login", class: "btn btn-danger" %>
+      or
+      <%= link_to 'Create new account', new_user_path, class: "btn btn-warning" %>
+    <% end %>
+    </div>
+    <div class="col-md-3"></div>
+</div>

@@ -16,28 +16,7 @@
 
       <br/>
 
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <%= render 'shared/flashcard_items' %>
-        </div>
-        <div class="col-md-3"></div>
-      </div>
-
-      <br/>
-
-      <div class="row">
-        <% if signed_in? %>
-          <%= render 'shared/sidebar' %>
-          <div class="col-md-1"></div>
-        <% else %>
-          <div class="col-md-4">
-          </div>
-        <% end %>
-        <div class="col-md-4">
-          <%= yield %>
-        </div>
-      </div>
+      <%= yield %>
 
       <% if !signed_in? %>
       <%= render 'shared/infographic' %>
