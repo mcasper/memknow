@@ -4,9 +4,9 @@
 		<div class="flip-container">
 			<div class="flipper">
 				<div class="front well">
-					#<%= @flashcard.scheduled_review_id %>
+					#<%= @flashcard.scheduled_review_id %> | <%= link_to "Edit", edit_flashcard_path %>
 					<hr/>
-
+					
 					<h2>Question</h2>
 					<%= @flashcard.question %>
 				</div>
