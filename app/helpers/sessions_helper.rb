@@ -8,12 +8,7 @@ module SessionsHelper
   end
 
   def current_user
-    id = session[:user_id]
-    if id
-      @current_user = User.find(id)
-    else
-      @current_user = GuestUser.new
-    end
+    @current_user ||= User.find_by(id: session[:user_id]) || GuestUser
   end
 
   def sign_in(user)

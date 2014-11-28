@@ -31,13 +31,13 @@ class Flashcard < ActiveRecord::Base
   validates :question, :answer, presence: true
 
   def calculate_next_review
-    if quality < 3
+    if score < 3
       self.repetitions = 0
       interval = 0
     else
-      new_difficulty = calculate_difficulty(difficulty_to_f, quality)
+      new_difficulty = calculate_difficulty(difficulty_to_f, score)
 
-      if quality == 3
+      if score == 3
         interval = 0
       else
         case repetitions
@@ -73,15 +73,15 @@ class Flashcard < ActiveRecord::Base
     difficulty.to_f
   end
 
-  def quality
-    reviews.last.quality
+  def score
+    reviews.last.score
   end
 
-  def calculate_difficulty(difficulty, quality)
-    q = quality
+  def calculate_difficulty(difficulty, score)
+    s = score
     d_old = difficulty
 
-    result = d_old - 0.8 + (0.28*q) - (0.028*q*q)
+    result = d_old - 0.8 + (0.28*s) - (0.028*s*s)
     result < 1.3 ? 1.3 : result
   end
 end
