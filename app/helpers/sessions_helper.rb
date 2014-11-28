@@ -1,6 +1,6 @@
 module SessionsHelper
   def signed_in?
-    current_user.present? && !current_user=GuestUser
+    current_user.present? && @current_user.instance_of?(User)
   end
 
   def current_user=(user)

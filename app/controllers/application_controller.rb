@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_variables
-
+    
   end
 end

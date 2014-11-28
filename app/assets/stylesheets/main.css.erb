@@ -7,6 +7,11 @@ body{
 	margin-top: 50px;
 }
 
+/* Header */
+.header {
+	float: right;
+}
+
 /* Banner */
 #banner img {
 	display: block;
@@ -65,13 +70,13 @@ footer {
 
 #footer{
 	margin-top: 20px !important;
-	text-align: center;
 }
 
 /* Flashcard Animations */
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000;
+	margin-bottom: 30px;
 }
 /* flip the pane when hovered */
 .flip-container.hover .flipper, .flip-container.flip .flipper {
@@ -85,7 +90,7 @@ footer {
 
 #flip-btn {
 	display: block;
-	margin: 0 auto;
+	margin: 0 auto 30px;
 }
 
 /* flip speed goes here */
@@ -99,7 +104,6 @@ footer {
 /* hide back of pane during swap */
 .front, .back {
 	backface-visibility: hidden;
-
 	position: absolute;
 	top: 0;
 	left: 0;

@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   skip_before_filter :authenticate, only: [:new, :create]
 
   def new
+    if signed_in?
+      redirect_to users_path
+    end
   end
 
   def create

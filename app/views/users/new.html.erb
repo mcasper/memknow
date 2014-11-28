@@ -15,11 +15,15 @@
 					<%= f.label :answer %>
 					<%= f.text_area :answer, class: 'form-control' %>
 				</div>
-				<% end %>
 			</div>
 		</div>
 		<br/>
-		<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">Flip over</button>
+		<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">
+			<i class="glyphicon glyphicon-refresh"></i>
+			Flip over
+		</button>
+		<% f.submit "Create Flashcard", class: "btn btn-success" %>
+		<% end %>
 	</div>
 	<div class="col-md-4"></div>
 </div>
@@ -32,9 +36,17 @@
 	<div class="col-md-4">
 		<h2>Start Studying Now!</h2>
 		<%= form_for :user, url: users_path do |f| %>
-			<%# if statement for error message %>
-			<div id="registration-error"></div>
-			<%# end %>
+			<% if flash[:notice] %>
+				<div id="registration-error">
+					<%= flash[:notice] %>
+				</div>
+			<% end %>
+
+			<% if flash[:error] %>
+				<div id="registration-error">
+					<%= flash[:error] %>
+				</div>
+			<% end %>
 			
 			<div class="field form-group">
 				<%= f.label :email %>
@@ -46,7 +58,7 @@
 				<%= f.password_field :password, class: 'form-control' %>
 			</div>
 
-			<%= f.submit 'Create Account', class: 'btn btn-danger' %>
+			<%= submit_tag 'Create Account', class: 'btn btn-danger' %>
 			or
 			<%= link_to 'Sign in', signin_path, class: 'btn btn-warning' %>
 		<% end %>
