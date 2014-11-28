@@ -1,6 +1,6 @@
 module SessionsHelper
   def signed_in?
-    current_user.present?
+    current_user.present? && @current_user.instance_of?(User)
   end
 
   def current_user=(user)
@@ -8,7 +8,12 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) || GuestUser.new
+    id = session[:user_id]
+    if id
+      @current_user = User.find(id)
+    else
+      @current_user = GuestUser.new
+    end
   end
 
   def sign_in(user)

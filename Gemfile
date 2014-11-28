@@ -5,6 +5,7 @@ gem "rails", "4.2.0.beta4"
 
 gem "bootstrap-sass", "~> 3.2.0"
 gem "autoprefixer-rails"
+gem "best_in_place", :git => 'https://github.com/bernat/best_in_place'
 
 gem "awesome_print"
 gem "jquery-rails"

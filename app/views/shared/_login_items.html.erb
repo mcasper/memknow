@@ -1,11 +1,11 @@
-<% if user_signed_in? %>
-  	<%= link_to destroy_user_session_path, class: 'btn btn-sucess' do %>
+<% if !current_user = GuestUser %>
+  	<%= link_to signout_path, class: 'btn btn-sucess' do %>
   		<i class="glyphicon glyphicon-minus"></i> Logout
   	<% end %>
-    <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
+    <%= link_to("Logout", signout_path, method: :delete) %>
 <% else %>
 	<li>
-    <%= link_to new_user_session_path do %>
+    <%= link_to users_path do %>
     	Login<i class="glyphicon glyphicon-plus"></i>
     </li>
     <% end %>

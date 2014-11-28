@@ -1,14 +1,21 @@
-<table>
-<tr>
-  <td> Question </td>
-  <td> Answer </td>
-</tr>
-<tbody>
-  <% @flashcards.each do |flashcard| %>
-    <tr>
-      <td> <%= flashcard.question %> </td>
-      <td> <%= flashcard.answer %> </td>
-    </tr>
-  <% end %>
-</tbody>
-</table>
+<div class="row">
+<% @flashcards.each do |flashcard| %>
+	<% div_id = flashcard.scheduled_review_id %>
+	<div class="col-md-6 col-xs-12">
+		<div class="flip-container flip-index" id="flip-<%= div_id %>">
+			<div class="flipper">
+				<div class="front well">
+					<h2>Question</h2>
+					<%= flashcard.question %>
+				</div>
+				<div class="back well">
+					<h2>Answer</h2>
+					<%= flashcard.answer %>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<button onclick="document.querySelector('#flip-<%= div_id %>').classList.toggle('hover');" class="btn btn-success" id="flip-btn">Flip over</button>
+	</div>
+<% end %>
+</div>

@@ -1,23 +1,61 @@
+html {
+	font-family: "Open Sans";
+}
 body{
-	background-image: url(<%= asset_path 'graphy_@2X.png' %>);
+	background-image: url(<%= asset_path 'linedpaper.png' %>);
 	background-repeat: repeat;
 	margin-top: 50px;
+
 }
 
-/* Banner */
+/* Header/Banner */
+.header {
+	margin-top: -50px;
+	background: #434144;
+	color: #fff;
+}
+.status p{
+	font-size: 2em;
+	float: right;
+}
+.status p span{
+	font-size: .5em;
+}
 #banner img {
 	display: block;
-	width: 50%;
+	width: 90%;
 	margin: 0 auto;
 }
-.well{
+
+/* Navbar */
+.navbar {
 	background: #434144;
 }
+.navbar-fixed-top .nav {
+	padding: 15px 0;
+}
 
+.navbar-fixed-top .navbar-brand {
+	padding: 0 15px;
+}
+.navbar-brand img {
+	max-width:100px;
+	height: auto;
+}
 /* Infographic */
 #infographic img{
 	display: block;
 	margin: 0 auto;
+	max-width:100%;
+	padding: 20px;
+}
+
+/* Dashboard */
+.dashboard {
+	text-align: center;
+}
+.dashboard span {
+	font-weight: bold;
 }
 
 /* Sidebar */
@@ -35,4 +73,98 @@ body{
 }
 #sidebar {
   float: right;
+}
+
+
+/* Footer */
+
+/* Wrapper for page content to push down footer */
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	/* Negative indent footer by it's height */
+	margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push, footer {
+	height: 60px;
+}
+
+footer {
+	background-color: #f5f5f5;
+}
+
+#footer{
+	margin-top: 20px !important;
+}
+
+/* Flashcard Animations */
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+	margin-bottom: 30px;
+}
+/* flip the pane when hovered */
+.flip-container.hover .flipper, .flip-container.flip .flipper {
+	transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 485px;
+	height: 320px;
+}
+
+#flip-btn {
+	display: block;
+	margin: 0 auto 30px;
+}
+.flip-index #flip-btn {
+	display: block;
+	margin: 0 200px 30px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+	body {
+		padding-top: 100px;
+	}
+	.navbar-fixed-top .navbar-brand {
+		padding: 15px 0;
+	}
+	footer {
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 }
