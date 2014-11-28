@@ -10,9 +10,10 @@
   </head>
   <body>
     <div class="header">
-    <%= render "shared/banner" %>
     <% if signed_in? %>
-      Logged in as <%= current_user.email %>
+      <%= render "shared/navbar" %>
+    <% else %>
+      <%= render "shared/banner" %>
     <% end %>
     </div>
 

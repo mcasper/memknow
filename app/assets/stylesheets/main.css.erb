@@ -5,6 +5,7 @@ body{
 	background-image: url(<%= asset_path 'linedpaper.png' %>);
 	background-repeat: repeat;
 	margin-top: 50px;
+	padding-top: 70px;
 }
 
 /* Header/Banner */
@@ -26,12 +27,30 @@ body{
 	margin: 0 auto;
 }
 
+/* Navbar */
+.navbar {
+	background: #434144;
+}
+.navbar-fixed-top .nav {
+	padding: 15px 0;
+}
+
+.navbar-fixed-top .navbar-brand {
+	padding: 0 15px;
+}
+
 /* Infographic */
 #infographic img{
 	display: block;
 	margin: 0 auto;
 	max-width:100%;
 	padding: 20px;
+}
+
+/* Dashboard */
+.dashboard {
+	text-align: center;
+	font-weight: bold;
 }
 
 /* Sidebar */
@@ -88,7 +107,7 @@ footer {
 }
 
 .flip-container, .front, .back {
-	width: 480px;
+	width: 485px;
 	height: 320px;
 }
 
@@ -131,6 +150,12 @@ footer {
 
 /* Responsive */
 @media (max-width: 767px) {
+	body {
+		padding-top: 100px;
+	}
+	.navbar-fixed-top .navbar-brand {
+		padding: 15px 0;
+	}
 	footer {
 		margin-left: -20px;
 		margin-right: -20px;
