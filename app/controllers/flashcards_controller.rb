@@ -18,7 +18,7 @@ class FlashcardsController < ApplicationController
       create_scheduled_review
       render :show
     else
-      redirect_to :new
+      redirect_to action: :new
     end
   end
 
@@ -28,7 +28,7 @@ class FlashcardsController < ApplicationController
     if @flashcard.update_attributes(flashcard_params)
       render :show
     else
-      redirect_to :new
+      redirect_to action: :new
     end
   end
 
