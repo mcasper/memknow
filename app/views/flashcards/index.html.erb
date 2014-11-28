@@ -1,5 +1,5 @@
 <div class="row">
-<%= @flashcards.each do |flashcard| %>
+<% @flashcards.each do |flashcard| %>
 	<% div_id = flashcard.scheduled_review_id %>
 	<div class="col-md-6 col-xs-12">
 		<div class="flip-container flip-index" id="flip-<%= div_id %>">
