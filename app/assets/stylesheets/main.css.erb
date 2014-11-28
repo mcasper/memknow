@@ -7,19 +7,23 @@ body{
 	margin-top: 50px;
 }
 
-/* Header */
+/* Header/Banner */
 .header {
+	margin-top: -50px;
+	background: #434144;
+	color: #fff;
+}
+.status p{
+	font-size: 2em;
 	float: right;
 }
-
-/* Banner */
+.status p span{
+	font-size: .5em;
+}
 #banner img {
 	display: block;
-	width: 50%;
+	width: 90%;
 	margin: 0 auto;
-}
-#banner-well{
-	background: #434144;
 }
 
 /* Infographic */
@@ -84,13 +88,17 @@ footer {
 }
 
 .flip-container, .front, .back {
-	width: 320px;
-	height: 480px;
+	width: 480px;
+	height: 320px;
 }
 
 #flip-btn {
 	display: block;
 	margin: 0 auto 30px;
+}
+.flip-index #flip-btn {
+	display: block;
+	margin: 0 200px 30px;
 }
 
 /* flip speed goes here */

@@ -5,21 +5,18 @@
     <%= stylesheet_link_tag "application", "main", media: "all", "data-turbolinks-track" => true %>
     <%= stylesheet_link_tag "application", "http://fonts.googleapis.com/css?family=Open+Sans:400,700,600" %>
     <%= favicon_link_tag 'favicon.ico' %>
-    <%= javascript_include_tag "application", "sidebar", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <div class="header">
+    <%= render "shared/banner" %>
     <% if signed_in? %>
-      Logged in as <%= @current_user.email %> | <%= link_to "Sign out", signout_path, :method=>:delete %>
-    <% else %>
-      <%= link_to "Sign in", signin_path %>
+      Logged in as <%= current_user.email %>
     <% end %>
     </div>
 
-
     <div class="container wrap">
-      <%= render 'shared/banner' %>
 
       <br/>
 
