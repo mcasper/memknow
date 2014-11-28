@@ -5,8 +5,7 @@
 		<span>Account Information</span>
 		<hr/>
 		Logged in as <%= current_user.email %> <br/>
-		<% user_date = ScheduledReview.where(id: current_user.id).first.created_at %>
-		Member since <%= user_date.to_formatted_s(:long) %>
+		Member since <%= user_date %>
 
 	</div>
 

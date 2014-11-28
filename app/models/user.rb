@@ -7,6 +7,8 @@
 #  password_digest :text
 #  first_name      :text
 #  last_name       :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 # Indexes
 #
@@ -18,4 +20,8 @@ class User < ActiveRecord::Base
 
   has_many :flashcards
   has_many :scheduled_reviews
+
+  def signup_date
+    created_at.to_date
+  end
 end

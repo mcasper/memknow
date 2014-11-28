@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117091729) do
+ActiveRecord::Schema.define(version: 20141128213240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,12 +34,11 @@ ActiveRecord::Schema.define(version: 20141117091729) do
   add_index "flashcards", ["user_id"], name: "index_flashcards_on_user_id", using: :btree
 
   create_table "reviews", force: true do |t|
-    t.string   "proposed_answer"
-    t.integer  "quality"
+    t.integer  "score"
     t.date     "review_date"
-    t.integer  "flashcard_id",    null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "flashcard_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "scheduled_reviews", force: true do |t|
@@ -52,10 +51,12 @@ ActiveRecord::Schema.define(version: 20141117091729) do
   add_index "scheduled_reviews", ["user_id"], name: "index_scheduled_reviews_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.text "email"
-    t.text "password_digest"
-    t.text "first_name"
-    t.text "last_name"
+    t.text     "email"
+    t.text     "password_digest"
+    t.text     "first_name"
+    t.text     "last_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
