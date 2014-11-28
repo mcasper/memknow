@@ -4,26 +4,5 @@
 		<a href="/"><%= image_tag "facebook-cover2.jpg" %></a>
 	</div>
 	<div class="col-md-3 status">
-		<p>
-			<% if signed_in? %>
-
-
-				<i class="glyphicon glyphicon-folder-close"></i>
-				
-
-
-				<%= link_to signout_path, :method=>:delete do %>
-					<i class="glyphicon glyphicon-off"></i>
-				<% end %>
-
-				<br/>
-				<span>Logged in as <%= current_user.email %></span>
-
-
-
-			<% else %>
-			<% link_to "Sign in", signin_path %>
-			<% end %>
-		</p>
 	</div>
 </div>
