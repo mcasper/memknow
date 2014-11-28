@@ -3,7 +3,11 @@
   <div class="col-md-6 well">
     <h2>Sign in</h2>
     <%= form_for :session, url: signin_path do |f| %>
-      <div class="registration-error"></div>
+      <% if flash[:error] %>
+        <div class="registration-error">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
 
       <div class="field form-group">
         <%= f.label :email %>

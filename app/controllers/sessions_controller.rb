@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_to action: :show, controller: "users", id: user.id
     else
+      flash[:error] = "Email/Password is incorrect"
       redirect_to signin_path
     end
   end
