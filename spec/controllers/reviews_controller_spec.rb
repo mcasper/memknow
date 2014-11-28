@@ -5,7 +5,8 @@ RSpec.describe ReviewsController, type: :controller do
 
   describe "POST #create" do
     it "creates a review" do
-      flashcard = FactoryGirl.create(:flashcard, user: user)
+      scheduled_review = FactoryGirl.create(:scheduled_review, user: user)
+      flashcard = FactoryGirl.create(:flashcard, user: user, scheduled_review: scheduled_review)
       post :create, { flashcard_id: flashcard.id, review: { score: 4, flashcard: flashcard } }, { user_id: user.id }
 
       expect(assigns(:review).score).to eq(4)

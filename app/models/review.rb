@@ -15,9 +15,15 @@ class Review < ActiveRecord::Base
 
   validates :flashcard, presence: true
 
-  after_create :set_repetitions
+  after_create :set_repetitions, :check_score
 
   def set_repetitions
     flashcard.repetitions += 1
+  end
+
+  def check_score
+    if score >= 3
+      flashcard.scheduled_review.flashcards.delete(flashcard)
+    end
   end
 end

@@ -25,5 +25,6 @@ FactoryGirl.define do
   end
 
   factory :scheduled_review do
+    scheduled_date Date.today
   end
 end

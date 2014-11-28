@@ -19,7 +19,8 @@ require "rails_helper"
 
 RSpec.describe Flashcard do
   let(:user) { FactoryGirl.create(:user) }
-  let!(:flashcard) { FactoryGirl.create(:flashcard, user: user) }
+  let!(:scheduled_review) { FactoryGirl.create(:scheduled_review, user: user) }
+  let!(:flashcard) { FactoryGirl.create(:flashcard, user: user, scheduled_review: scheduled_review) }
   let!(:review) { FactoryGirl.create(:review, flashcard: flashcard, score: 4) }
 
   describe ".calculate_next_review" do
