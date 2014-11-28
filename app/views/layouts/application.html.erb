@@ -11,12 +11,14 @@
   <body>
     <div class="header">
     <% if signed_in? %>
-
+      <%= render "shared/navbar" %>
     <% else %>
       <%= render "shared/banner" %>
     <% end %>
     </div>
 
+    <div class="header-push"></div>
+    
     <div class="container wrap">
 
       <br/>
