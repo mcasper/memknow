@@ -3,43 +3,49 @@
 	<div class="col-md-6 col-xs-12">
 		<div class="flip-container">
 			<div class="flipper">
-				<%= form_for :flashcard, url: flashcards_path do |f| %>
+
 				<div class="front well">
-					<h2>Write your question here...</h2>
-					<%= f.label :question %>
-					<%= f.text_field :question, class: 'form-control' %>
+				<h2> Write your question here...</h2>
+					Question<br/>
+					<input type="text" name="question" class="form-control" id="question">
 				</div>
+
 				<div class="back well">
 					<h2>...and write your answer here!</h2>
 					<p>*hint: pull on the bottom right corner of the text box for more room!</p>
-					<%= f.label :answer %>
-					<%= f.text_area :answer, class: 'form-control' %>
+					Answer<br/>
+					<textarea id="answer" class="form-control"></textarea>
 					<div class="flashcard-push"></div>
-
-
-					<button type="button" class="btn btn-success btn-flashcard" onclick="submitFlashcard()" data-toggle="modal" data-target="#myModal">
-						Create Flashcard <i class="glyphicon glyphicon-plus"></i>
+					<button type="button" class="btn btn-success btn-flashcard" onclick="submitFlashcard()" data-toggle="modal" data-target="#newAccountModal">
+					Create Flashcard <i class="glyphicon glyphicon-plus"></i>
+					</button>
 				</div>
-				<% end %>
 			</div>
 		</div>
 		<br/>
 		<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">
-			<i class="glyphicon glyphicon-refresh"></i>
-			Flip over
+			Flip over <i class="glyphicon glyphicon-refresh"></i>
 		</button>
 	</div>
 	<div class="col-md-3"></div>
 </div>
 
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+	<h3>If you already have an account, <a href="#" data-toggle="modal" data-target="#signinModal">sign in here</a></h3>
+</div>
+<div class="col-md-3"></div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+
+<!-- New Accoutn Modal -->
+<div class="modal fade" id="newAccountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Account Creation</h4>
       </div>
       <div class="modal-body">
 
@@ -58,7 +64,7 @@
 						<%= flash[:error] %>
 					</div>
 				<% end %>
-				
+
 				<div class="field form-group">
 					<%= f.label :email %>
 					<%= f.text_field :email, class: 'form-control' %>
@@ -72,41 +78,68 @@
 				<%= submit_tag 'Create Account', class: 'btn btn-danger' %>
 			<% end %>
 		</div>
-
-
-		<!-- Sign in -->
-		<div class="col-md-12 well">
-		<h2>Sign in</h2>
-		<%= form_for :session, url: signin_path do |f| %>
-		  <% if flash[:error] %>
-		    <div class="registration-error">
-		      <%= flash[:error] %>
-		    </div>
-		  <% end %>
-
-		  <div class="field form-group">
-		    <%= f.label :email %>
-		    <%= f.text_field :email, class: "form-control" %>
-		  </div>
-
-		  <div class="field form-group">
-		    <%= f.label :password %>
-		    <%= f.password_field :password, class: "form-control" %>
-		  </div>
-
-		  <%= f.submit "Login", class: "btn btn-danger" %>
-
-		<% end %>
-		</div>
-
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Sign in  Modal -->
+<div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign in</h4>
+      </div>
+      <div class="modal-body">
+
+      	<!-- Sign In -->
+		<div class="col-md-12 well">
+		    <h2>Sign in</h2>
+		    <%= form_for :session, url: signin_path do |f| %>
+		      <% if flash[:error] %>
+		        <div class="registration-error">
+		          <%= flash[:error] %>
+		        </div>
+		      <% end %>
+
+		      <div class="field form-group">
+		        <%= f.label :email %>
+		        <%= f.text_field :email, class: "form-control" %>
+		      </div>
+
+		      <div class="field form-group">
+		        <%= f.label :password %>
+		        <%= f.password_field :password, class: "form-control" %>
+		      </div>
+
+		      <%= f.submit "Login", class: "btn btn-danger" %>
+		      or
+		      <%= link_to 'Create new account', new_user_path, class: "btn btn-warning" %>
+		    <% end %>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Grab flashcard values -->
+
+<script>
+	var question;
+	var answer;
+
+	function submitFlashcard() {
+		question = $("#question").val();
+		answer = $("#answer").val();
+		alert(question + " " + answer);
+	}
+</script>
 
 

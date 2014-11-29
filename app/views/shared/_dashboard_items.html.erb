@@ -5,7 +5,7 @@
 		<span>Account Information</span>
 		<hr/>
 		Logged in as <%= current_user.email %> <br/>
-		<% if user_date = Date.today %>
+		<% if user_date == Date.today %>
 			Thanks for creating an account! Let's get studying!
 		<% else %>
 			Member since <%= user_date.to_formatted_s(:long) %>

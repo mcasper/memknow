@@ -12,7 +12,7 @@ class FlashcardsController < ApplicationController
   end
 
   def create
-    @flashcard = current_user.flashcards.new(flashcard_params)
+      @flashcard = current_user.flashcards.new(flashcard_params)
 
     if @flashcard.save
       create_scheduled_review

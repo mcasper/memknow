@@ -16,12 +16,12 @@ class SessionsController < ApplicationController
       redirect_to action: :show, controller: "users", id: user.id
     else
       flash[:error] = "Email/Password is incorrect"
-      redirect_to signin_path
+      redirect_to root_path
     end
   end
 
   def destroy
     sign_out
-    redirect_to signin_path
+    redirect_to root_path
   end
 end
