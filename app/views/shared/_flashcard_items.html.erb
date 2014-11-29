@@ -1,6 +1,5 @@
 <div class="row">
-	<div class="col-md-3"></div>
-	<div class="col-md-6 col-xs-12">
+	<div class="col-md-6 col-xs-12 col-centered">
 		<div class="flip-container">
 			<div class="flipper">
 				<%= form_for :flashcard, url: flashcards_path do |f| %>
@@ -11,15 +10,15 @@
 				<div class="back well">
 					<h2>Answer</h2>
 					<%= f.text_area :answer, class: 'form-control' %>
-					<%= button_tag 'Create Flashcard', class: 'btn btn-success' do %>
-						Create Flashcard <i class="glyphicon glyphicon-plus"></i>
-					<% end %>
+					<div class="flashcard-push"></div>
+						<%= button_tag 'Create Flashcard', class: 'btn btn-success btn-flashcard' do %>
+							Create Flashcard <i class="glyphicon glyphicon-plus"></i>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3"></div>
 </div> <!-- Row -->
 
 <div class="row">

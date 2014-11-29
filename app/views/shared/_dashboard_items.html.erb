@@ -23,7 +23,11 @@
 		<% if current_scheduled_review %>
 			<%= link_to "Study now", scheduled_review_path(current_scheduled_review) %>
 		<% else %>
-			No flashcards to study today! Review your cards <%= link_to "here", flashcards_path %>
+			<% if current_user.flashcards.count > 0 %>
+				No flashcards to study today! Review your cards <%= link_to "here", flashcards_path %>
+			<% else %>
+				<%= link_to "Create flashcards", new_flashcard_path %> and start studying now!
+			<% end %>
 		<% end %>
 	</div>
 </div>
