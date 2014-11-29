@@ -19,7 +19,8 @@
 	<div class="col-md-4 well">
 		<span>Scheduled Reviews</span>
 		<hr/>
-		You have <%= current_user.scheduled_reviews.where(scheduled_date: Date.today).count %> flashcards to study today <br/>
+		<% to_study = current_user.scheduled_reviews.where(scheduled_date: Date.today).count %>
+		You have <%= to_study %> <%= link_to " flashcards", scheduled_reviews_path %> to study today <br/>
 		<% if current_scheduled_review %>
 			<%= link_to "Study now", scheduled_review_path(current_scheduled_review) %>
 		<% else %>
