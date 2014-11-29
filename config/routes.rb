@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  root "sessions#new"
+	root "users#new"
 
-  get "signin", to: "sessions#new"
-  post "signin", to: "sessions#create"
-  delete "signout", to: "sessions#destroy"
+	get "signin", to: "sessions#new"
+	post "signin", to: "sessions#create"
+	delete "signout", to: "sessions#destroy"
 
   resources :flashcards
-  resources :scheduled_reviews, only: [:show]
+  resources :scheduled_reviews, only: [:index, :show]
   resources :reviews, only: [:create]
   resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create]

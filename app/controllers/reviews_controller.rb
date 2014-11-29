@@ -19,6 +19,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:proposed_answer, :quality)
+    params.require(:review).permit(:score)
   end
 end

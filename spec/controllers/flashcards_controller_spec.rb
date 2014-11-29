@@ -1,16 +1,13 @@
 require "rails_helper"
 
 RSpec.describe FlashcardsController, type: :controller do
-  before do
-    @user = setup_user
-    authenticate(@user)
-  end
+  let(:user) { FactoryGirl.create(:user) }
 
   describe "GET #show" do
     it "returns a flashcard" do
-      flashcard = FactoryGirl.create(:flashcard, user: @user)
+      flashcard = FactoryGirl.create(:flashcard, user: user)
 
-      get :show, id: flashcard.id
+      get :show, { id: flashcard.id }, { user_id: user.id }
 
       expect(response.status).to be(200)
       expect(assigns(:flashcard)).to eq(flashcard)
@@ -19,7 +16,7 @@ RSpec.describe FlashcardsController, type: :controller do
 
   describe "GET #new" do
     it "initializes a new flashcard" do
-      get :new
+      get :new, {}, { user_id: user.id }
 
       expect(response.status).to be(200)
       expect(assigns(:flashcard)).to be_a(Flashcard)
@@ -28,7 +25,7 @@ RSpec.describe FlashcardsController, type: :controller do
 
   describe "POST #create" do
     it "creates a flashcard" do
-      post :create, flashcard: { question: "Hello?", answer: "Hello!" }
+      post :create, { flashcard: { question: "Hello?", answer: "Hello!" } }, { user_id: user.id }
 
       expect(response.status).to be(200)
       expect(assigns(:flashcard).question).to eq("Hello?")
@@ -37,9 +34,9 @@ RSpec.describe FlashcardsController, type: :controller do
 
   describe "PUT #update" do
     it "updates a flashcard" do
-      flashcard = FactoryGirl.create(:flashcard, user: @user)
+      flashcard = FactoryGirl.create(:flashcard, user: user)
 
-      put :update, id: flashcard.id, flashcard: { last_interval: 6, repetitions: 3 }
+      put :update, { id: flashcard.id, flashcard: { last_interval: 6, repetitions: 3 } }, { user_id: user.id }
 
       expect(response.status).to be(200)
       expect(assigns(:flashcard).repetitions).to eq(3)
@@ -48,9 +45,9 @@ RSpec.describe FlashcardsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys a flashcard" do
-      flashcard = FactoryGirl.create(:flashcard, user: @user)
+      flashcard = FactoryGirl.create(:flashcard, user: user)
 
-      delete :destroy, id: flashcard.id
+      delete :destroy, { id: flashcard.id }, { user_id: user.id }
 
       expect(Flashcard.count).to eq(0)
     end

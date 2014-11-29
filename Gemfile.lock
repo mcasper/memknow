@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/bernat/best_in_place
+  revision: 4881fd1bda32bc9f922970657ce7d4931e997dff
+  specs:
+    best_in_place (3.0.0)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -214,6 +222,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   bcrypt
+  best_in_place!
   bootstrap-sass (~> 3.2.0)
   capistrano-rails
   capybara

@@ -1,0 +1,32 @@
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><%= image_tag "horizontal-logo.jpg" %></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="status">
+                <%= link_to scheduled_reviews_path do %>
+                <i class="glyphicon glyphicon-folder-close"></i>
+                <div class="number-overlay">
+                    <%= current_user.scheduled_reviews.where(scheduled_date: Date.today).count %>
+                </div>
+                <% end %>
+
+                <%= link_to signout_path, :method=>:delete do %>
+                    <i class="glyphicon glyphicon-off"></i>
+                <% end %>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>

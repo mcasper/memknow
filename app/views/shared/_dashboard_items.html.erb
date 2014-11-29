@@ -1,0 +1,37 @@
+<h2>Dashboard</h2>
+
+<div class="row dashboard">
+	<div class="col-md-4 well">
+		<span>Account Information</span>
+		<hr/>
+		Logged in as <%= current_user.email %> <br/>
+		<% if user_date = Date.today %>
+			Thanks for creating an account! Let's get studying!
+		<% else %>
+			Member since <%= user_date.to_formatted_s(:long) %>
+		<% end %>
+	</div>
+
+	<div class="col-md-4 well">
+		<span>Manage Flashcards</span>
+		<hr/>
+		<%= link_to "Create a new flashcard", new_flashcard_path %> <br/>
+		<%= link_to "My Flashcards", flashcards_path %> (<%= current_user.flashcards.count %>)
+	</div>
+
+	<div class="col-md-4 well">
+		<span>Scheduled Reviews</span>
+		<hr/>
+		<% to_study = current_user.scheduled_reviews.where(scheduled_date: Date.today).count %>
+		You have <%= to_study %> <%= link_to " flashcards", scheduled_reviews_path %> to study today <br/>
+		<% if current_scheduled_review %>
+			<%= link_to "Study now", scheduled_review_path(current_scheduled_review) %>
+		<% else %>
+			<% if current_user.flashcards.count > 0 %>
+				No flashcards to study today! Review your cards <%= link_to "here", flashcards_path %>
+			<% else %>
+				<%= link_to "Create flashcards", new_flashcard_path %> and start studying now!
+			<% end %>
+		<% end %>
+	</div>
+</div>

@@ -1,9 +1,2 @@
-<%= render template: "flashcards/new" %>
-<div> <%= link_to "My Flashcards", flashcards_path %> </div>
-<div>
-  <% if current_scheduled_review %>
-    <%= link_to "Flashcards to review", scheduled_review_path(current_scheduled_review) %>
-  <% else %>
-    No flashcards to study today!
-  <% end %>
-</div>
+<%= render "shared/dashboard_items" %>
+<%= render "shared/flashcard_items" %>

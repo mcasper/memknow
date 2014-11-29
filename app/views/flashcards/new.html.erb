@@ -1,15 +1,2 @@
-<div>
-<%= form_for :flashcard, url: flashcards_path do |f| %>
-  <div>
-    <%= f.label :question %>
-    <%= f.text_field :question %>
-  </div>
-
-  <div>
-    <%= f.label :answer %>
-    <%= f.text_field :answer %>
-  </div>
-
-  <%= f.submit %>
-<% end %>
-</div>
+<h2> New Flashcard </h2>
+<%= render "shared/flashcard_items" %>

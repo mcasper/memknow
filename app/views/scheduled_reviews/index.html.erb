@@ -1,10 +1,11 @@
-<h2> My Flashcards (<%= @flashcards.count %>)</h2>
+<h2> Cards to review (<%= @scheduled_reviews.count %>)</h2>
 <div class="row">
-<% @flashcards.each do |flashcard| %>
-	<% div_id = flashcard.scheduled_review_id %>
+<% @scheduled_reviews.each do |review| %>
+	<% div_id = review.id %>
 	<div class="col-md-6 col-xs-12">
 		<div class="flip-container flip-index" id="flip-<%= div_id %>">
 			<div class="flipper">
+				<% current_user.flashcards.where(scheduled_review_id: div_id).each do |flashcard| %>
 				<div class="front well">
 					<h2>Question</h2>
 					<hr/>
@@ -15,6 +16,7 @@
 					<hr/>
 					<%= flashcard.answer %>
 				</div>
+				<% end %>
 			</div>
 		</div>
 		<br/>

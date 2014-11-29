@@ -11,8 +11,7 @@ FactoryGirl.define do
   end
 
   factory :review do
-    proposed_answer "Is it 42?"
-    quality 3
+    score 3
     review_date Date.today - 1.day
     flashcard Flashcard.first
   end
@@ -26,5 +25,6 @@ FactoryGirl.define do
   end
 
   factory :scheduled_review do
+    scheduled_date Date.today
   end
 end

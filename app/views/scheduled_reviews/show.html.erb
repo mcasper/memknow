@@ -1,12 +1,43 @@
-<table>
-<tr>
-  <td> Question </td>
-</tr>
-<tbody>
-  <% @scheduled_review.flashcards.each do |flashcard| %>
-    <tr>
-      <td> <%= flashcard.question %> </td>
-    </tr>
-  <% end %>
-</tbody>
-</table>
+<h2>Scheduled Review </h2>
+
+<div class="row">
+	<% @reviews.each do |flashcard| %>
+	<div class="col-md-4"></div>
+	<div class="col-md-4 col-xs-12">
+		<div class="flip-container">
+			<div class="flipper">
+				<div class="front well">
+					<h2>Question</h2>
+					<hr/>
+					<%= flashcard.question %>
+				</div>
+				<div class="back well">
+					<h2>Answer</h2>
+					<hr/>
+					<%= flashcard.answer %>
+					<div class="row">
+						<div class="card-push"></div>
+						How'd you do?<br/>
+						Rate your answer, and we'll schedule the next best time for you to study:
+						<div class="col-md-3 col-xs-3 btn btn-success">
+							button
+						</div>
+						<div class="col-md-3 col-xs-3 btn btn-success">
+							button
+						</div>
+						<div class="col-md-3 col-xs-3 btn btn-success">
+							button
+						</div>
+						<div class="col-md-3 col-xs-3 btn btn-success">
+							button
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">Flip over</button>
+	</div>
+	<div class="col-md-4"></div>
+	<% end %>
+</div>
