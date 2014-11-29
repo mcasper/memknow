@@ -12,11 +12,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if User.find_by_email(@user.email)
+    if User.find_by(email: @user.email)
       flash[:error] = "An account with this email already exists"
       render :new
     elsif @user.save
-      redirect_to user_path(@user)
+      sign_in user
+      render :show
     else
       flash[:error] = "Missing something"
       render :new
