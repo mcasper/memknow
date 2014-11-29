@@ -16,7 +16,8 @@
 					<%= f.text_area :answer, class: 'form-control' %>
 					<div class="flashcard-push"></div>
 
-					<button type="button" class="btn btn-success btn-flashcard" data-toggle="modal" data-target="#myModal">
+
+					<button type="button" class="btn btn-success btn-flashcard" onclick="submitFlashcard()" data-toggle="modal" data-target="#myModal">
 						Create Flashcard <i class="glyphicon glyphicon-plus"></i>
 				</div>
 				<% end %>
