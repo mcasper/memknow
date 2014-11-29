@@ -8,10 +8,12 @@
 				<% current_user.flashcards.where(scheduled_review_id: div_id).each do |flashcard| %>
 				<div class="front well">
 					<h2>Question</h2>
+					<hr/>
 					<%= flashcard.question %>
 				</div>
 				<div class="back well">
 					<h2>Answer</h2>
+					<hr/>
 					<%= flashcard.answer %>
 				</div>
 				<% end %>
