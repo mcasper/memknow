@@ -14,7 +14,14 @@
 					<p>*hint: pull on the bottom right corner of the text box for more room!</p>
 					<%= f.label :answer %>
 					<%= f.text_area :answer, class: 'form-control' %>
+					<div class="flashcard-push"></div>
+
+					<button type="button" class="btn btn-success btn-flashcard" data-toggle="modal" data-target="#myModal">
+						Create Flashcard <i class="glyphicon glyphicon-plus"></i>
+
+
 				</div>
+				<% end %>
 			</div>
 		</div>
 		<br/>
@@ -22,17 +29,21 @@
 			<i class="glyphicon glyphicon-refresh"></i>
 			Flip over
 		</button>
-		<% end %>
 	</div>
 	<div class="col-md-3"></div>
 </div>
 
-<br/>
-<br/>
 
-<div class="row">
-	<div class="col-md-4"></div>
-	<div class="col-md-4">
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+	<div class="col-md-12 well">
 		<h2>Start Studying Now!</h2>
 		<%= form_for :user, url: users_path do |f| %>
 			<% if flash[:notice] %>
@@ -58,25 +69,54 @@
 			</div>
 
 			<%= submit_tag 'Create Account', class: 'btn btn-danger' %>
-			or
-			<%= link_to 'Sign in', signin_path, class: 'btn btn-warning' %>
+
 		<% end %>
 	</div>
-	<div class="col-md-4"></div>
+
+
+
+	<div class="col-md-12 well">
+    <h2>Sign in</h2>
+    <%= form_for :session, url: signin_path do |f| %>
+      <% if flash[:error] %>
+        <div class="registration-error">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <div class="field form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+
+      <%= f.submit "Login", class: "btn btn-danger" %>
+
+    <% end %>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<!-- Pure HTML Template
-<form role="form">
-  <div class="form-group">
-    <label for="username">Email</label>
-    <input type="text" name="email" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" name="password" class="form-control" />
-  </div>
-
-  <input type="submit" value="Create Account" />
-</form>
--->

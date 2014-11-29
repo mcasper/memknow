@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       flash[:error] = "An account with this email already exists"
       render :new
     elsif @user.save
-      sign_in user
+      sign_in @user
       render :show
     else
       flash[:error] = "Missing something"
