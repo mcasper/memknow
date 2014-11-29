@@ -1,6 +1,6 @@
-<h2> Cards to review (<%= @scheduled_reviews.count %>)</h2>
+<h2> Cards to review (<%= @scheduled_reviews.where(scheduled_date: Date.today).count %>)</h2>
 <div class="row">
-<% @scheduled_reviews.each do |review| %>
+<% @scheduled_reviews.where(scheduled_date: Date.today).each do |review| %>
 	<% div_id = review.id %>
 	<div class="col-md-6 col-xs-12">
 		<div class="flip-container flip-index" id="flip-<%= div_id %>">
