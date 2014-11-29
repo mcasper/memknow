@@ -28,7 +28,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.4)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    active_form (0.0.8)
     activejob (4.2.0.beta4)
       activesupport (= 4.2.0.beta4)
       globalid (>= 0.3.0)
@@ -219,7 +218,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_form
   annotate
   autoprefixer-rails
   awesome_print
