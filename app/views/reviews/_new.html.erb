@@ -1,0 +1,6 @@
+<%= form_for :review, url: flashcard_reviews_path(flashcard) do |f| %>
+  <%= f.submit ":(", class: "col-md-3 col-xs-3 btn btn-success" %>
+  <%= f.submit "Ehhh", class: "col-md-3 col-xs-3 btn btn-success" %>
+  <%= f.submit "Not bad", class: "col-md-3 col-xs-3 btn btn-success" %>
+  <%= f.submit "Aced", class: "col-md-3 col-xs-3 btn btn-success" %>
+<% end %>
