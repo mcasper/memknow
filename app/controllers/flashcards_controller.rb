@@ -12,10 +12,10 @@ class FlashcardsController < ApplicationController
   end
 
   def create
-      @flashcard = current_user.flashcards.new(flashcard_params)
+    @flashcard = current_user.flashcards.new(flashcard_params)
 
     if @flashcard.save
-      create_scheduled_review
+      create_or_add_to_scheduled_review(@flashcard)
       render :show
     else
       redirect_to action: :new
@@ -41,9 +41,21 @@ class FlashcardsController < ApplicationController
 
   private
 
+  def create_or_add_to_scheduled_review(flashcard)
+    if current_scheduled_review
+      add_to_scheduled_review(flashcard)
+    else
+      create_scheduled_review
+    end
+  end
+
   def create_scheduled_review
     scheduled_review = current_user.scheduled_reviews.create(scheduled_date: Date.today)
     scheduled_review.flashcards << @flashcard
+  end
+
+  def add_to_scheduled_review(flashcard)
+    current_scheduled_review.flashcards << flashcard
   end
 
   def flashcard_params
