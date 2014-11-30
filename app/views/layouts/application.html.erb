@@ -9,6 +9,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div class="container wrap">
     <div class="header">
     <% if signed_in? %>
       <%= render "shared/navbar" %>
@@ -18,8 +19,6 @@
     </div>
 
     <div class="header-push"></div>
-    
-    <div class="container wrap">
 
       <br/>
 
