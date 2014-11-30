@@ -1,111 +1,141 @@
 <div class="row">
 	<div class="col-md-3"></div>
 	<div class="col-md-6 col-xs-12">
+		<%= form_for :user, url: users_path do |user| %>
+		<%= user.fields_for :flashcard do |flashcard| %>
 		<div class="flip-container">
 			<div class="flipper">
-				<%= form_for :flashcard, url: flashcards_path do |f| %>
 				<div class="front well">
-					<h2>Write your question here...</h2>
-					<%= f.label :question %>
-					<%= f.text_field :question, class: 'form-control' %>
+				<h2> Write your question here...</h2>
+					Question<br/>
+					<%= flashcard.text_field :question, class: "form-control" %>
 				</div>
+
 				<div class="back well">
 					<h2>...and write your answer here!</h2>
 					<p>*hint: pull on the bottom right corner of the text box for more room!</p>
-					<%= f.label :answer %>
-					<%= f.text_area :answer, class: 'form-control' %>
+					Answer<br/>
+					<%= flashcard.text_area :answer, class: "form-control" %>
 					<div class="flashcard-push"></div>
-
-					<button type="button" class="btn btn-success btn-flashcard" data-toggle="modal" data-target="#myModal">
-						Create Flashcard <i class="glyphicon glyphicon-plus"></i>
+					<% end %> <!-- Question form -->
+					<button type="button" class="btn btn-success btn-flashcard" onclick="submitFlashcard()" data-toggle="modal" data-target="#newAccountModal">
+					Create Flashcard <i class="glyphicon glyphicon-plus"></i>
+					</button>
 				</div>
-				<% end %>
 			</div>
 		</div>
-		<br/>
-		<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">
-			<i class="glyphicon glyphicon-refresh"></i>
-			Flip over
-		</button>
 	</div>
 	<div class="col-md-3"></div>
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- New Account Modal -->
+<div class="modal fade" id="newAccountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Account Creation</h4>
       </div>
-      <div class="modal-body">
 
-      	<!-- Create Account -->
-		<div class="col-md-12 well">
-			<h2>Start Studying Now!</h2>
-			<%= form_for :user, url: users_path do |f| %>
-				<% if flash[:notice] %>
-					<div id="registration-error">
-						<%= flash[:notice] %>
-					</div>
-				<% end %>
-
-				<% if flash[:error] %>
-					<div id="registration-error">
-						<%= flash[:error] %>
-					</div>
-				<% end %>
-				
-				<div class="field form-group">
-					<%= f.label :email %>
-					<%= f.text_field :email, class: 'form-control' %>
+	<!-- Create Account -->
+	<div class="col-md-12 well">
+		<h2>Start Studying Now!</h2>
+			<% if flash[:notice] %>
+				<div id="registration-error">
+					<%= flash[:notice] %>
 				</div>
-
-				<div class="field form-group">
-					<%= f.label :password %>
-					<%= f.password_field :password, class: 'form-control' %>
-				</div>
-
-				<%= submit_tag 'Create Account', class: 'btn btn-danger' %>
 			<% end %>
-		</div>
 
+			<% if flash[:error] %>
+				<div id="registration-error">
+					<%= flash[:error] %>
+				</div>
+			<% end %>
 
-		<!-- Sign in -->
-		<div class="col-md-12 well">
-		<h2>Sign in</h2>
-		<%= form_for :session, url: signin_path do |f| %>
-		  <% if flash[:error] %>
-		    <div class="registration-error">
-		      <%= flash[:error] %>
-		    </div>
-		  <% end %>
+			<div class="field form-group">
+				<%= user.label :email %>
+				<%= user.text_field :email, class: 'form-control' %>
+			</div>
 
-		  <div class="field form-group">
-		    <%= f.label :email %>
-		    <%= f.text_field :email, class: "form-control" %>
-		  </div>
+			<div class="field form-group">
+				<%= user.label :password %>
+				<%= user.password_field :password, class: 'form-control' %>
+			</div>
 
-		  <div class="field form-group">
-		    <%= f.label :password %>
-		    <%= f.password_field :password, class: "form-control" %>
-		  </div>
-
-		  <%= f.submit "Login", class: "btn btn-danger" %>
-
+			<%= user.submit 'Create Account', class: 'btn btn-danger' %>
 		<% end %>
-		</div>
+	</div>
 
-
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
+<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">
+	Flip over <i class="glyphicon glyphicon-refresh"></i>
+</button>
+
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+	<h3>If you already have an account, <a href="#" data-toggle="modal" data-target="#signinModal">sign in here</a></h3>
+</div>
+<div class="col-md-3"></div>
+</div> <!-- Row -->
+
+<!-- Sign in  Modal -->
+<div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Welcome back!</h4>
+      </div>
+  	<!-- Sign In -->
+	<div class="col-md-12 well">
+	    <h2>Sign in</h2>
+	    <%= form_for :session, url: signin_path do |f| %>
+	      <% if flash[:error] %>
+	        <div class="registration-error">
+	          <%= flash[:error] %>
+	        </div>
+	      <% end %>
+
+	      <div class="field form-group">
+	        <%= f.label :email %>
+	        <%= f.text_field :email, class: "form-control" %>
+	      </div>
+
+	      <div class="field form-group">
+	        <%= f.label :password %>
+	        <%= f.password_field :password, class: "form-control" %>
+	      </div>
+
+	      <%= f.submit "Login", class: "btn btn-danger" %>
+	      or
+	      <%= link_to 'Create new account', new_user_path, class: "btn btn-warning" %>
+	    <% end %>
+	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Grab flashcard values -->
+
+<script>
+	var question;
+	var answer;
+
+	function submitFlashcard() {
+		question = $("#question").val();
+		answer = $("#answer").val();
+		alert(question + " " + answer);
+	}
+</script>
 
 

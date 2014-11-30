@@ -1,4 +1,7 @@
 <h2> My Flashcards (<%= @flashcards.count %>)</h2>
+<%= render "shared/back" %>
+<br/><br/>
+
 <div class="row">
 <% @flashcards.each do |flashcard| %>
 	<% div_id = flashcard.scheduled_review_id %>

@@ -1,4 +1,7 @@
 <h2> Cards to review (<%= @scheduled_reviews.where(scheduled_date: Date.today).count %>)</h2>
+<%= render "shared/back" %>
+<br/><br/>
+
 <div class="row">
 <% @scheduled_reviews.where(scheduled_date: Date.today).each do |review| %>
 	<% div_id = review.id %>
