@@ -17,6 +17,11 @@ class UsersController < ApplicationController
       render :new
     elsif @user.save
       sign_in @user
+      if params[:user][:flashcard]
+        scheduled_review = @user.scheduled_reviews.create(scheduled_date: Date.today)
+        @user.flashcards.create(question: params[:user][:flashcard][:question], answer: params[:user][:flashcard][:answer], scheduled_review: scheduled_review)
+      end
+
       render :show
     else
       flash[:error] = "Missing something"

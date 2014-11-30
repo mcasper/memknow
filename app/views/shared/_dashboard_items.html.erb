@@ -22,12 +22,12 @@
 	<div class="col-md-4 well">
 		<span>Scheduled Reviews</span>
 		<hr/>
-		<% to_study = current_user.scheduled_reviews.where(scheduled_date: Date.today).count %>
+		<% to_study = flashcards_count %>
 		You have <%= to_study %> <%= link_to " flashcards", scheduled_reviews_path %> to study today <br/>
 		<% if current_scheduled_review %>
 			<%= link_to "Study now", scheduled_review_path(current_scheduled_review) %>
 		<% else %>
-			<% if current_user.flashcards.count > 0 %>
+			<% if flashcards_count = 0 %>
 				No flashcards to study today! Review your cards <%= link_to "here", flashcards_path %>
 			<% else %>
 				<%= link_to "Create flashcards", new_flashcard_path %> and start studying now!

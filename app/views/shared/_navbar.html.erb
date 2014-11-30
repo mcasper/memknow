@@ -17,11 +17,11 @@
                 <%= link_to scheduled_reviews_path do %>
                 <i class="glyphicon glyphicon-folder-close"></i>
                 <div class="number-overlay">
-                    <%= current_user.scheduled_reviews.where(scheduled_date: Date.today).count %>
+                    <%= flashcards_count %>
                 </div>
                 <% end %>
 
-                <%= link_to signout_path, :method=>:delete do %>
+                <%= link_to signout_path, method: :delete do %>
                     <i class="glyphicon glyphicon-off"></i>
                 <% end %>
             </div>
