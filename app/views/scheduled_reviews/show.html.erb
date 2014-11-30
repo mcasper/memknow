@@ -4,8 +4,7 @@
 
 <div class="row">
 	<% @reviews.each do |flashcard| %>
-	<div class="col-md-4"></div>
-	<div class="col-md-4 col-xs-12">
+	<div class="col-md-6 col-xs-12 col-centered">
 		<div class="flip-container">
 			<div class="flipper">
 				<div class="front well">
@@ -29,6 +28,5 @@
 		<br/>
 		<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">Flip over</button>
 	</div>
-	<div class="col-md-4"></div>
 	<% end %>
 </div>
