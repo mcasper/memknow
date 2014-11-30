@@ -4,11 +4,11 @@
 
 <% if flashcards_count > 0 %>
 <div class="row">
+  <% current_scheduled_review.flashcards.each do |flashcard| %>
+  <% div_id = flashcard.id %>
   <div class="col-md-6 col-xs-12">
-    <% div_id = current_scheduled_review.id %>
     <div class="flip-container flip-index" id="flip-<%= div_id %>">
       <div class="flipper">
-        <% current_scheduled_review.flashcards.each do |flashcard| %>
           <div class="front well">
             <h2>Question</h2>
             <hr/>
@@ -19,12 +19,12 @@
             <hr/>
             <%= flashcard.answer %>
           </div>
-        <% end %>
       </div>
     </div>
     <br/>
     <button onclick="document.querySelector('#flip-<%= div_id %>').classList.toggle('hover');" class="btn btn-success" id="flip-btn">Flip over</button>
   </div>
+  <% end %>
 </div>
 
 <% else %>
