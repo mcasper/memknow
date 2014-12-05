@@ -3,27 +3,24 @@
 	<div class="col-md-6 col-xs-12">
 		<%= form_for :user, url: users_path do |user| %>
 		<%= user.fields_for :flashcard do |flashcard| %>
-		<div class="flip-container">
-			<div class="flipper">
-				<div class="front well">
-				<h2> Write your question here...</h2>
-					Question<br/>
-					<%= flashcard.text_field :question, class: "form-control" %>
-				</div>
 
-				<div class="back well">
-					<h2>...and write your answer here!</h2>
-					<p>*hint: pull on the bottom right corner of the text box for more room!</p>
-					Answer<br/>
-					<%= flashcard.text_area :answer, class: "form-control" %>
-					<div class="flashcard-push"></div>
-					<% end %> <!-- Question form -->
-					<button type="button" class="btn btn-success btn-flashcard" data-toggle="modal" data-target="#newAccountModal">
-					Create Flashcard <i class="glyphicon glyphicon-plus"></i>
-					</button>
-				</div>
-			</div>
+		<div class="landing-card well">
+			<h2>Write your question here...</h2>
+			Question<br/>
+			<%= flashcard.text_field :question, class: "form-control" %>
+			<br/>
+
+			<h2>...and write your answer here!</h2>
+			Answer<br/> 
+			(*hint: pull on the bottom right corner of the text box for more room)<br/>
+			<%= flashcard.text_area :answer, class: "form-control" %>
+			<% end %>
+			<br/>
 		</div>
+
+		<button type="button" class="btn btn-success btn-flashcard" data-toggle="modal" data-target="#newAccountModal">
+			Create Flashcard <i class="glyphicon glyphicon-plus"></i>
+		</button>
 	</div>
 	<div class="col-md-3"></div>
 </div>
@@ -73,16 +70,12 @@
   </div>
 </div>
 
-<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">
-	Flip over <i class="glyphicon glyphicon-refresh"></i>
-</button>
-
 <div class="row">
-<div class="col-md-3"></div>
-<div class="col-md-6">
-	<h3>If you already have an account, <a href="#" data-toggle="modal" data-target="#signinModal">sign in here</a></h3>
-</div>
-<div class="col-md-3"></div>
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<h3>If you already have an account, <a href="#" data-toggle="modal" data-target="#signinModal">sign in here</a></h3>
+	</div>
+	<div class="col-md-3"></div>
 </div> <!-- Row -->
 
 <!-- Sign in  Modal -->
