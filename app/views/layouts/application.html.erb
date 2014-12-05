@@ -17,7 +17,9 @@
     <% end %>
     </div>
 
-
+    <% unless !signed_in? %>
+    <div class="header-push"></div>
+    <% end %>
     
     <div class="container wrap">
       <br/>
