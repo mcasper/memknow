@@ -6,12 +6,10 @@
 
 		<div class="well">
 			<h2>Write your question here...</h2>
-			Question<br/>
 			<%= flashcard.text_field :question, class: "form-control" %>
 			<br/>
 
 			<h2>...and write your answer here!</h2>
-			Answer<br/> 
 			(*hint: pull on the bottom right corner of the text box for more room)<br/>
 			<%= flashcard.text_area :answer, class: "form-control" %>
 			<% end %>
