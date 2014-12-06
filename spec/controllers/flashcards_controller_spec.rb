@@ -27,7 +27,6 @@ RSpec.describe FlashcardsController, type: :controller do
     it "creates a flashcard" do
       post :create, { flashcard: { question: "Hello?", answer: "Hello!" } }, { user_id: user.id }
 
-      expect(response.status).to be(200)
       expect(assigns(:flashcard).question).to eq("Hello?")
     end
   end

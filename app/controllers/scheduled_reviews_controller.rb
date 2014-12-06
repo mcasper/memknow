@@ -7,5 +7,4 @@ class ScheduledReviewsController < ApplicationController
     @scheduled_review = current_user.scheduled_reviews.find(params[:id])
     @reviews = @scheduled_review.flashcards
   end
-
 end

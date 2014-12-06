@@ -3,6 +3,10 @@ require "rails_helper"
 RSpec.describe ReviewsController, type: :controller do
   let(:user) { FactoryGirl.create(:user) }
 
+  before do
+    request.env['HTTP_REFERER'] = 'testurl'
+  end
+
   describe "POST #create" do
     it "creates a review" do
       scheduled_review = FactoryGirl.create(:scheduled_review, user: user)
