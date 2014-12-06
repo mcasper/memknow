@@ -10,7 +10,9 @@
 				<div class="back well">
 					<h2>Done!</h2>
 					<hr/>
-					<%= SuccessMessage.new.message %> <br/><br/>
+          <%= SuccessMessage.new.message.each do |message| %> <br/><br/>
+            <%= message %>
+          <% end %>
 					That's it! You're done, go on with your life!
 				</div>
 			</div>
