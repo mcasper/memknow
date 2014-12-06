@@ -1,7 +1,10 @@
 <h2> My Flashcards (<%= @flashcards.count %>)</h2>
+<%= render "shared/back" %>
+<br/><br/>
+
 <div class="row">
 <% @flashcards.each do |flashcard| %>
-	<% div_id = flashcard.scheduled_review_id %>
+	<% div_id = flashcard.id %>
 	<div class="col-md-6 col-xs-12">
 		<div class="flip-container flip-index" id="flip-<%= div_id %>">
 			<div class="flipper">

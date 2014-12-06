@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-6 col-xs-12 col-centered">
+		<div class="flip-container">
+			<div class="flipper">
+				<div class="front well">
+					<h2>One last thing...</h2>
+					<hr/>
+					Turn the card over!
+				</div>
+				<div class="back well">
+					<h2>Done!</h2>
+					<hr/>
+					<%= SuccessMessage.new.message %> <br/><br/>
+					That's it! You're done, go on with your life!
+				</div>
+			</div>
+		</div>
+		<br/>
+		<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">Flip over</button>
+	</div>
+</div>

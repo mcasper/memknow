@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :flashcards
   has_many :scheduled_reviews
 
+  accepts_nested_attributes_for :flashcards
+
   def signup_date
     created_at.to_date
   end

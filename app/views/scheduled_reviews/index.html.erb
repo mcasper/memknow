@@ -1,26 +1,33 @@
-<h2> Cards to review (<%= @scheduled_reviews.count %>)</h2>
+<h2> Cards to review (<%= flashcards_count %>)</h2>
+<%= render "shared/back" %>
+<br/><br/>
+
+<% if flashcards_count > 0 %>
 <div class="row">
-<% @scheduled_reviews.each do |review| %>
-	<% div_id = review.id %>
-	<div class="col-md-6 col-xs-12">
-		<div class="flip-container flip-index" id="flip-<%= div_id %>">
-			<div class="flipper">
-				<% current_user.flashcards.where(scheduled_review_id: div_id).each do |flashcard| %>
-				<div class="front well">
-					<h2>Question</h2>
-					<hr/>
-					<%= flashcard.question %>
-				</div>
-				<div class="back well">
-					<h2>Answer</h2>
-					<hr/>
-					<%= flashcard.answer %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-		<br/>
-		<button onclick="document.querySelector('#flip-<%= div_id %>').classList.toggle('hover');" class="btn btn-success" id="flip-btn">Flip over</button>
-	</div>
-<% end %>
+  <% current_scheduled_review.flashcards.each do |flashcard| %>
+  <% div_id = flashcard.id %>
+  <div class="col-md-6 col-xs-12">
+    <div class="flip-container flip-index" id="flip-<%= div_id %>">
+      <div class="flipper">
+          <div class="front well">
+            <h2>Question</h2>
+            <hr/>
+            <%= flashcard.question %>
+          </div>
+          <div class="back well">
+            <h2>Answer</h2>
+            <hr/>
+            <%= flashcard.answer %>
+          </div>
+      </div>
+    </div>
+    <br/>
+    <button onclick="document.querySelector('#flip-<%= div_id %>').classList.toggle('hover');" class="btn btn-success" id="flip-btn">Flip over</button>
+  </div>
+  <% end %>
 </div>
+
+<% else %>
+<%= render "shared/finished" %>
+
+<% end %>

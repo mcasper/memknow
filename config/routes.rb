@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 	post "signin", to: "sessions#create"
 	delete "signout", to: "sessions#destroy"
 
-  resources :flashcards
+  resources :flashcards do
+    resources :reviews, only: [:create]
+  end
   resources :scheduled_reviews, only: [:index, :show]
-  resources :reviews, only: [:create]
   resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create]
 end

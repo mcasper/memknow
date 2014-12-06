@@ -17,10 +17,11 @@
     <% end %>
     </div>
 
+    <% unless !signed_in? %>
     <div class="header-push"></div>
+    <% end %>
     
     <div class="container wrap">
-
       <br/>
 
       <%= yield %>
@@ -34,7 +35,7 @@
     <footer>
       <div class="container">
         <p class="muted credit" id="footer">
-          &copy;2014. Development version of Memknow Intelligent Flashcard software created by Eric Kopp.
+          &copy;2014 Memknow
         </p>
       </div>
     </footer>
