@@ -16,7 +16,7 @@ class FlashcardsController < ApplicationController
 
     if @flashcard.save
       create_or_add_to_scheduled_review(@flashcard)
-      render :show
+      redirect_to user_path(current_user)
     else
       redirect_to action: :new
     end
