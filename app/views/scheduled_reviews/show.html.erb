@@ -4,8 +4,9 @@
 
 <div class="row">
 	<% @reviews.each do |flashcard| %>
+	<% div_id = flashcard.id %>
 	<div class="col-md-6 col-xs-12 col-centered">
-		<div class="flip-container">
+		<div class="flip-container" id="flip-<%= div_id %>">
 			<div class="flipper">
 				<div class="front well">
 					<h2>Question</h2>
@@ -26,7 +27,9 @@
 			</div>
 		</div>
 		<br/>
-		<button onclick="document.querySelector('.flip-container').classList.toggle('hover');" class="btn btn-success" id="flip-btn">Flip over</button>
+		<button onclick="document.querySelector('#flip-<%= div_id %>').classList.toggle('hover');" class="btn btn-success" id="flip-btn">
+			Flip over <i class="glyphicon glyphicon-refresh"></i>
+		</button>
 	</div>
 	<% end %>
 </div>
