@@ -19,6 +19,6 @@ Rails.application.configure do
     port: 587,
     domain: "cattmasper.mailgun.org",
     user_name: "postmaster@cattmasper.mailgun.org",
-    password: "7e0f6ca0c32a05c0902c5f67a10d9deb"
+    password: "567b0a456f73b71461f75ee56ee72f71"
   }
 end
