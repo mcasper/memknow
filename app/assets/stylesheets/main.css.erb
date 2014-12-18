@@ -107,7 +107,6 @@ footer {
 }
 
 /* Flashcard Animations */
-/* entire container, keeps perspective */
 
 .col-centered {
 	float: none;
@@ -138,7 +137,7 @@ footer {
 	margin: 0 200px 30px;
 }
 
-/* flip speed goes here */
+/* Flip speed */
 .flipper {
 	transition: 0.6s;
 	transform-style: preserve-3d;
@@ -146,7 +145,6 @@ footer {
 	position: relative;
 }
 
-/* hide back of pane during swap */
 .front, .back {
 	backface-visibility: hidden;
 	position: absolute;
@@ -154,14 +152,13 @@ footer {
 	left: 0;
 }
 
-/* front pane, placed above back */
+/* Front side */
 .front {
 	z-index: 2;
-	/* for firefox 31 */
 	transform: rotateY(0deg);
 }
 
-/* back, initially hidden pane */
+/* Back side */
 .back {
 	transform: rotateY(180deg);
 }
@@ -185,6 +182,14 @@ footer {
 	font-weight: bold;
 	line-height: 50px;
 	margin-top:-60px;
+}
+
+/* Review Buttons */
+.review-buttons .btn {
+	width: 85%;
+	height: 45px;
+	border-radius: 25%;
+	margin-top: 10px;
 }
 
 /* Responsive */
