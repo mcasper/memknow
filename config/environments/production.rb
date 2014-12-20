@@ -17,10 +17,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     authentication: :plain,
-    address: "smtp.mailgun.org",
-    port: 587,
+    address: ENV["MAILGUN_SMTP_SERVER"]
+    port: ENV["MAILGUN_SMTP_PORT"]
     domain: "memknow.mailgun.org",
-    user_name: "postmaster@memknow.mailgun.org",
-    password: "c2579318491ad3328b7b22aaf5c41241"
+    user_name: ENV["MAILGUN_SMTP_LOGIN"]
+    password: ENV["MAILGUN_SMTP_PASSWORD"]
   }
 end
