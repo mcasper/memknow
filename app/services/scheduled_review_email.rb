@@ -7,7 +7,7 @@ class ScheduledReviewEmail
 
   def next_review
     RestClient.post ENV["API_URL"] + "/messages",
-      from: "study@cattmasper.com",
+      from: "study@memknow.com",
       to: "#{scheduled_review.user.email}",
       subject: "Stop! Study time",
       text: message

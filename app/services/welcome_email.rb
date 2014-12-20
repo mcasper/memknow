@@ -7,7 +7,7 @@ class WelcomeEmail
 
   def welcome
     RestClient.post ENV["API_URL"] + "/messages",
-      from: "study@cattmasper.com",
+      from: "study@memknow.com",
       to: "#{user.email}",
       subject: "You + Memknow = Genius",
       text: message
