@@ -12,7 +12,7 @@ RSpec.describe ScheduledReviewMailer, type: :mailer do
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to include("You signed up for Memknow.")
+      expect(mail.body).to include("You signed up for Memknow.")
     end
   end
 end

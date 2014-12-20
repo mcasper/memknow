@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "2.1.5"
 
-gem "rails", "4.2.0.rc2"
+gem "rails", "4.2"
 
 gem "bootstrap-sass", "~> 3.2.0"
 gem "autoprefixer-rails"
@@ -14,6 +14,7 @@ gem "bcrypt"
 gem "pry-rails"
 gem "rails-html-sanitizer", "~> 1.0"
 gem "slim"
+gem "rest_client"
 gem "turbolinks"
 gem "uglifier", ">= 1.3.0"
 
