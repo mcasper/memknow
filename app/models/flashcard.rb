@@ -5,14 +5,14 @@
 #  id                  :integer          not null, primary key
 #  question            :string           not null
 #  answer              :string           not null
-#  difficulty          :decimal(, )      default("2.5")
+#  difficulty          :decimal(, )      default(2.5)
 #  user_id             :integer          not null
 #  deck_id             :integer
 #  scheduled_review_id :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
-#  repetitions         :integer          default("0")
-#  last_interval       :integer          default("0")
+#  repetitions         :integer          default(0)
+#  last_interval       :integer          default(0)
 #
 # Indexes
 #

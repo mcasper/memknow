@@ -11,22 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128213240) do
+ActiveRecord::Schema.define(version: 20141220043341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
   create_table "flashcards", force: true do |t|
-    t.string   "question",                          null: false
-    t.string   "answer",                            null: false
-    t.decimal  "difficulty",          default: 2.5
-    t.integer  "user_id",                           null: false
+    t.string   "question",            limit: nil,               null: false
+    t.string   "answer",              limit: nil,               null: false
+    t.decimal  "difficulty",                      default: 2.5
+    t.integer  "user_id",                                       null: false
     t.integer  "deck_id"
     t.integer  "scheduled_review_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.integer  "repetitions",         default: 0
-    t.integer  "last_interval",       default: 0
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "repetitions",                     default: 0
+    t.integer  "last_interval",                   default: 0
   end
 
   add_index "flashcards", ["deck_id"], name: "index_flashcards_on_deck_id", using: :btree

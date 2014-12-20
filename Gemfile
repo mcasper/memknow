@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "2.1.5"
 
-gem "rails", "4.2"
+gem "rails", "4.1"
 
 gem "bootstrap-sass", "~> 3.2.0"
 gem "autoprefixer-rails"
@@ -12,11 +12,12 @@ gem "jquery-rails"
 gem "pg"
 gem "bcrypt"
 gem "pry-rails"
-gem "rails-html-sanitizer", "~> 1.0"
+gem "delayed_job_active_record"
+gem "rails-html-sanitizer"
 gem "slim"
 gem "rest_client"
 gem "turbolinks"
-gem "uglifier", ">= 1.3.0"
+gem "uglifier"
 
 group :production do
   gem "rails_12factor"
@@ -30,7 +31,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "pry-byebug"
   gem "spring"
-  gem "web-console", "~> 2.0.0.beta2"
+  gem "web-console"
 end
 
 group :test do

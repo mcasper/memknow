@@ -21,7 +21,6 @@ module Memknow
     # config.i18n.default_locale = :de
 
     # For not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
     config.serve_static_assets = false
     config.i18n.default_locale = :en
   end
