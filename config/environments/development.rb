@@ -18,8 +18,8 @@ Rails.application.configure do
     authentication: :plain,
     domain: "memknow.mailgun.org",
     enable_starttls_auto: true,
-    password: "c2579318491ad3328b7b22aaf5c41241"
+    password: "c2579318491ad3328b7b22aaf5c41241",
     port: 587,
-    user_name: "postmaster@memknow.mailgun.org",
+    user_name: "postmaster@memknow.mailgun.org"
   }
 end

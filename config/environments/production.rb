@@ -19,8 +19,8 @@ Rails.application.configure do
     address: "smtp.mailgun.org",
     authentication: :plain,
     domain: "memknow-test.heroku.com",
-    password: "c2579318491ad3328b7b22aaf5c41241"
+    password: "c2579318491ad3328b7b22aaf5c41241",
     port: 587,
-    user_name: "postmaster@memknow.mailgun.org",
+    user_name: "postmaster@memknow.mailgun.org"
   }
 end
