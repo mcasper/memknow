@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       flash[:error] = "An account with this email already exists"
       render :new
     elsif @user.save
-      WelcomeEmail.welcome(@user).deliver
+      WelcomeEmail.new(@user).welcome
       sign_in @user
       if params[:user][:flashcard]
         scheduled_review = @user.scheduled_reviews.create(scheduled_date: Date.today)
