@@ -52,7 +52,7 @@ class FlashcardsController < ApplicationController
   def create_scheduled_review
     scheduled_review = current_user.scheduled_reviews.create(scheduled_date: Date.today)
     scheduled_review.flashcards << @flashcard
-    ScheduledReviewEmail.new(scheduled_review).delay(run_at: scheduled_review.scheduled_date + 1.hours).next_review
+    ScheduledReviewMailer.new_review_scheduled(scheduled_review).deliver_now
   end
 
   def add_to_scheduled_review(flashcard)
