@@ -51,19 +51,20 @@ class Flashcard < ActiveRecord::Base
       end
     end
 
-    self.scheduled_review = ScheduledReview.create(scheduled_date: Date.today + interval.to_i, user: User.first)
+    self.scheduled_review = ScheduledReview.create(scheduled_date: Date.today + interval.to_i, user: user)
     self.last_interval = interval.to_i
   end
 
   def schedule_next_review(interval, current_user)
     scheduled_date = Date.today + interval
-    future_review = current_user.scheduled_reviews.where(scheduled_date: scheduled_date).first
+    future_review = current_user.scheduled_reviews.find_by(scheduled_date: scheduled_date)
 
     if future_review
       future_review.flashcards << self
     else
       new_review = current_user.scheduled_reviews.create(scheduled_date: scheduled_date)
       new_review.flashcards << self
+      ScheduledReviewEmail.new(scheduled_review).delay(run_at: scheduled_review.scheduled_date + 1.hours).next_review
     end
   end
 

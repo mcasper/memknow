@@ -8,7 +8,7 @@ RSpec.describe WelcomeEmail, type: :service do
       expect(WelcomeEmail.new(user).message).to include("Hey there!")
     end
 
-    it "sends an email" do
+    xit "sends an email" do
       email = JSON.parse(WelcomeEmail.new(user).welcome)
       expect(email["message"]).to eq("Queued. Thank you.")
     end

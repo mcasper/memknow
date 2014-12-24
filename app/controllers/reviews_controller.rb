@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     if @review.save
       interval = @review.flashcard.calculate_next_review
       @review.flashcard.schedule_next_review(interval, current_user)
+
       redirect_to :back
     else
       render :new
@@ -28,9 +29,5 @@ class ReviewsController < ApplicationController
 
   def current_flashcard
     current_user.flashcards.find(params[:flashcard_id])
-  end
-
-  def current_scheduled_review
-    current_flashcard.scheduled_review
   end
 end

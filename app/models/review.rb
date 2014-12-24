@@ -23,7 +23,11 @@ class Review < ActiveRecord::Base
 
   def check_score
     if score >= 3
-      flashcard.scheduled_review.flashcards.delete(flashcard)
+      if flashcard.scheduled_review.flashcards == [flashcard]
+        flashcard.scheduled_review.destroy
+      else
+        flashcard.scheduled_review.flashcards.delete(flashcard)
+      end
     end
   end
 end
