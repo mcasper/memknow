@@ -6,7 +6,11 @@ class ReviewsController < ApplicationController
       interval = @review.flashcard.calculate_next_review
       @review.flashcard.schedule_next_review(interval, current_user)
 
-      redirect_to :back
+      if @review.flashcard.try(:scheduled_review)
+        redirect_to :back
+      else
+        redirect_to scheduled_reviews_path
+      end
     else
       render :new
     end
