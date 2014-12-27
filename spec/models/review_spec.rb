@@ -8,7 +8,7 @@ RSpec.describe Review, type: :model do
       flashcard = FactoryGirl.create(:flashcard, user: user, scheduled_review: scheduled_review)
       review = FactoryGirl.create(:review, flashcard: flashcard, score: 3)
 
-      expect(ScheduledReview.count).to eq(0)
+      expect(scheduled_review.flashcards.count).to eq(0)
     end
   end
 end

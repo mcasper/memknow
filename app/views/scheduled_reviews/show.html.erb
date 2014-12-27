@@ -3,7 +3,7 @@
 <br/><br/>
 
 <div class="row">
-	<% @reviews.each do |flashcard| %>
+	<% @scheduled_review.flashcards.each do |flashcard| %>
 	<% div_id = flashcard.id %>
 	<div class="col-md-6 col-xs-12 col-centered">
 		<div class="flip-container" id="flip-<%= div_id %>">
@@ -32,4 +32,8 @@
 		</button>
 	</div>
 	<% end %>
+
+  <% if @scheduled_review.flashcards.count == 0 %>
+    <%= render "shared/finished" %>
+  <% end %>
 </div>

@@ -56,7 +56,12 @@ class FlashcardsController < ApplicationController
   end
 
   def add_to_scheduled_review(flashcard)
-    current_scheduled_review.flashcards << flashcard
+    if current_scheduled_review.flashcards == []
+      ScheduledReviewEmail.new(current_scheduled_review).delay(run_at: current_scheduled_review.scheduled_date + 1.hours).next_review
+      current_scheduled_review.flashcards << flashcard
+    else
+      current_scheduled_review.flashcards << flashcard
+    end
   end
 
   def flashcard_params
