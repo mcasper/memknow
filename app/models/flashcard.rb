@@ -64,7 +64,7 @@ class Flashcard < ActiveRecord::Base
     else
       new_review = current_user.scheduled_reviews.create(scheduled_date: scheduled_date)
       new_review.flashcards << self
-      ScheduledReviewEmail.new(scheduled_review).delay(run_at: scheduled_review.scheduled_date + 1.hours).next_review
+      ScheduledReviewEmail.new(scheduled_review).next_review
     end
   end
 

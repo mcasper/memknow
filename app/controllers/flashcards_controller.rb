@@ -52,12 +52,12 @@ class FlashcardsController < ApplicationController
   def create_scheduled_review
     scheduled_review = current_user.scheduled_reviews.create(scheduled_date: Date.today)
     scheduled_review.flashcards << @flashcard
-    ScheduledReviewEmail.new(scheduled_review).delay(run_at: scheduled_review.scheduled_date + 1.hours).next_review
+    ScheduledReviewEmail.new(scheduled_review).next_review
   end
 
   def add_to_scheduled_review(flashcard)
     if current_scheduled_review.flashcards == []
-      ScheduledReviewEmail.new(current_scheduled_review).delay(run_at: current_scheduled_review.scheduled_date + 1.hours).next_review
+      ScheduledReviewEmail.new(current_scheduled_review).next_review
       current_scheduled_review.flashcards << flashcard
     else
       current_scheduled_review.flashcards << flashcard
