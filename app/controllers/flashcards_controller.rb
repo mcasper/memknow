@@ -18,6 +18,7 @@ class FlashcardsController < ApplicationController
       create_or_add_to_scheduled_review(@flashcard)
       redirect_to user_path(current_user)
     else
+      flash[:error] = "Please enter both a question AND an answer"
       redirect_to action: :new
     end
   end

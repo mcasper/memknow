@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+	<div class="alert alert-warning">
+	    <a href="#" class="close" data-dismiss="alert">&times;</a>
+	    <strong>Oops!</strong> <%= flash[:notice] %>
+	</div>
+<% end %>
+
+<% if flash[:error] %>
+	<div class="alert alert-warning">
+	    <a href="#" class="close" data-dismiss="alert">&times;</a>
+	    <strong>Oops!</strong> <%= flash[:error] %>
+	</div>
+<% end %>
