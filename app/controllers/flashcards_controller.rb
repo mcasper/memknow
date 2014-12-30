@@ -36,7 +36,7 @@ class FlashcardsController < ApplicationController
     @flashcard = current_user.flashcards.find(params[:id])
     @flashcard.destroy
 
-    head :ok
+    redirect_to :back
   end
 
   private

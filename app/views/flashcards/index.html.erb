@@ -9,11 +9,17 @@
 		<div class="flip-container flip-index" id="flip-<%= div_id %>">
 			<div class="flipper">
 				<div class="front well">
+					<%= link_to flashcard_path(flashcard.id), :method => :delete do %>
+  						<i class="glyphicon glyphicon-remove-sign delete-btn"></i>
+					<% end %>
 					<h2>Question</h2>
 					<hr/>
 					<%= flashcard.question %>
 				</div>
 				<div class="back well">
+					<%= link_to flashcard_path(flashcard.id), :method => :delete do %>
+  						<i class="glyphicon glyphicon-remove-sign delete-btn"></i>
+					<% end %>
 					<h2>Answer</h2>
 					<hr/>
 					<%= flashcard.answer %>
