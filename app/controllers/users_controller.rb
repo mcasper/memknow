@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params.merge(email: user_params[:email].downcase))
 
     if User.find_by(email: @user.email)
       flash[:error] = "An account with this email already exists"
