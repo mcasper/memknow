@@ -19,6 +19,6 @@ class ScheduledReview < ActiveRecord::Base
   has_many :flashcards
 
   def scheduled_time
-    scheduled_date + 6.hours
+    scheduled_date + 1.hour
   end
 end
