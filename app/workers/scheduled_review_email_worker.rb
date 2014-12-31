@@ -1,7 +1,8 @@
 class ScheduledReviewEmailWorker
   include Sidekiq::Worker
 
-  def perform(scheduled_review)
+  def perform(id)
+    scheduled_review = ScheduledReview.find(id)
     RestClient.post ENV["API_URL"] + "/messages",
       from: "study@memknow.com",
       to: "#{scheduled_review.user.email}",

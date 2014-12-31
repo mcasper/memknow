@@ -17,4 +17,8 @@ class ScheduledReview < ActiveRecord::Base
   belongs_to :user
 
   has_many :flashcards
+
+  def scheduled_time
+    scheduled_date + 6.hours
+  end
 end
