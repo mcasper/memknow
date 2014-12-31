@@ -1,4 +1,5 @@
 <div class="row">
+	<%= render "shared/error_message" %>
 	<div class="col-md-3"></div>
 	<div class="col-md-6 col-xs-12">
 		<%= form_for :user, url: users_path do |user| %>
@@ -17,7 +18,7 @@
 		</div>
 
 		<button type="button" class="btn btn-success btn-flashcard" data-toggle="modal" data-target="#newAccountModal">
-			Create Flashcard <i class="glyphicon glyphicon-plus"></i>
+			Create Mem <i class="glyphicon glyphicon-plus"></i>
 		</button>
 	</div>
 	<div class="col-md-3"></div>
@@ -35,18 +36,6 @@
 	<!-- Create Account -->
 	<div class="col-md-12 well">
 		<h2>Start Studying Now!</h2>
-			<% if flash[:notice] %>
-				<div id="registration-error">
-					<%= flash[:notice] %>
-				</div>
-			<% end %>
-
-			<% if flash[:error] %>
-				<div id="registration-error">
-					<%= flash[:error] %>
-				</div>
-			<% end %>
-
 			<div class="field form-group">
 				<%= user.label :email %>
 				<%= user.text_field :email, class: 'form-control' %>
@@ -88,12 +77,6 @@
 	<div class="col-md-12 well">
 	    <h2>Sign in</h2>
 	    <%= form_for :session, url: signin_path do |f| %>
-	      <% if flash[:error] %>
-	        <div class="registration-error">
-	          <%= flash[:error] %>
-	        </div>
-	      <% end %>
-
 	      <div class="field form-group">
 	        <%= f.label :email %>
 	        <%= f.text_field :email, class: "form-control" %>

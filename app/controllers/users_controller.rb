@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
       render :show
     else
-      flash[:error] = "Missing something"
+      flash[:error] = "Please enter a valid email address and password"
       render :new
     end
   end

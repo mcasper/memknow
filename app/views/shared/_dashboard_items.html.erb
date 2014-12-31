@@ -13,24 +13,24 @@
 	</div>
 
 	<div class="col-md-4 well">
-		<span>Manage Flashcards</span>
+		<span>Manage Mems</span>
 		<hr/>
-		<%= link_to "Create a new flashcard", new_flashcard_path %> <br/>
-		<%= link_to "My Flashcards", flashcards_path %> (<%= current_user.flashcards.count %>)
+		<%= link_to "Create a new Mem", new_flashcard_path %> <br/>
+		<%= link_to "My Mems", flashcards_path %> (<%= current_user.flashcards.count %>)
 	</div>
 
 	<div class="col-md-4 well">
 		<span>Scheduled Reviews</span>
 		<hr/>
 		<% to_study = flashcards_count %>
-		You have <%= to_study %> <%= link_to " flashcards", scheduled_reviews_path %> to study today <br/>
+		You have <%= to_study %> <%= link_to " Mems", scheduled_reviews_path %> to study today <br/>
 		<% if flashcards_count > 0 %>
 			<%= link_to "Study now", scheduled_review_path(current_scheduled_review) %>
 		<% else %>
 			<% if current_user.flashcards.count > 0  %>
-				No flashcards to study today! Review your cards <%= link_to "here", flashcards_path %>
+				No Mems to study today! Review your cards <%= link_to "here", flashcards_path %>
 			<% else %>
-				<%= link_to "Create flashcards", new_flashcard_path %> and start studying now!
+				<%= link_to "Create Mems", new_flashcard_path %> and start studying now!
 			<% end %>
 		<% end %>
 	</div>

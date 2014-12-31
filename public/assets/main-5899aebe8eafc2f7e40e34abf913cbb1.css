@@ -2,7 +2,7 @@ html {
 	font-family: "Open Sans";
 }
 body{
-	background-image: url(<%= asset_path 'linedpaper.png' %>);
+	background-image: url(/assets/linedpaper-936223e587b5a1ca995f80765ed6170a.png);
 	background-repeat: repeat;
 	margin-top: 50px;
 }
@@ -82,12 +82,6 @@ body{
 	font-weight: bold;
 }
 
-/* Error Message */
-.alert {
-	background-color: #FF0051;
-	color: #fff;
-}
-
 /* Footer */
 
 /* Wrapper for page content to push down footer */
@@ -119,12 +113,14 @@ footer {
 	margin: 0 auto;
 }
 .flip-container {
-	perspective: 1000;
+	-webkit-perspective: 1000;
+	        perspective: 1000;
 	margin-bottom: 30px;
 }
 /* flip the pane when hovered */
 .flip-container.hover .flipper, .flip-container.flip .flipper {
-	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg);
 }
 .flipper h2 {
 	text-align: center;
@@ -146,14 +142,17 @@ footer {
 
 /* Flip speed */
 .flipper {
-	transition: 0.6s;
-	transform-style: preserve-3d;
+	-webkit-transition: 0.6s;
+	        transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+	        transform-style: preserve-3d;
 
 	position: relative;
 }
 
 .front, .back {
-	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -162,12 +161,14 @@ footer {
 /* Front side */
 .front {
 	z-index: 2;
-	transform: rotateY(0deg);
+	-webkit-transform: rotateY(0deg);
+	        transform: rotateY(0deg);
 }
 
 /* Back side */
 .back {
-	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	        transform: rotateY(180deg);
 }
 
 .flashcard-push {
