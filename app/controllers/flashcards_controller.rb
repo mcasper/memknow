@@ -54,7 +54,7 @@ class FlashcardsController < ApplicationController
     scheduled_review = current_user.scheduled_reviews.create(scheduled_date: Date.today)
     scheduled_review.flashcards << @flashcard
     ScheduledReviewEmail.new(scheduled_review).next_review
-    # ScheduledReviewEmailWorker.delay_for(10.minutes).perform_async(scheduled_review)
+    ScheduledReviewEmailWorker.delay_for(10.minutes).perform_async(scheduled_review)
   end
 
   def add_to_scheduled_review(flashcard)
