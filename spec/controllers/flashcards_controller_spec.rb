@@ -25,6 +25,7 @@ RSpec.describe FlashcardsController, type: :controller do
 
   describe "POST #create" do
     it "creates a flashcard" do
+      allow(ScheduledReviewEmailWorker).to receive(:perform_at) { true }
       post :create, { flashcard: { question: "Hello?", answer: "Hello!" } }, { user_id: user.id }
 
       expect(assigns(:flashcard).question).to eq("Hello?")
@@ -44,6 +45,7 @@ RSpec.describe FlashcardsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys a flashcard" do
+      request.env["HTTP_REFERER"] = "testurl"
       flashcard = FactoryGirl.create(:flashcard, user: user)
 
       delete :destroy, { id: flashcard.id }, { user_id: user.id }

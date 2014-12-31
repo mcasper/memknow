@@ -67,6 +67,7 @@ RSpec.describe Flashcard do
     end
 
     it "creates a new scheduled review if there is not an existing one for that date" do
+      allow(ScheduledReviewEmailWorker).to receive(:perform_at) { true }
       flashcard.schedule_next_review(6, user)
 
       expect(flashcard.scheduled_review.scheduled_date).to eq(Date.today + 6)
