@@ -15,4 +15,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: "memknow-test.com" }
   config.action_mailer.delivery_method = :smtp
+
+  ENV["REDISTOGO_URL"] = "redis://redistogo:e80e39ac81a08450bf2966641065a49d@mummichog.redistogo.com:9585/"
 end

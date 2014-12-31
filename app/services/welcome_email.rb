@@ -6,11 +6,13 @@ class WelcomeEmail
   end
 
   def welcome
-    RestClient.post ENV["API_URL"] + "/messages",
-      from: "study@memknow.com",
-      to: "#{user.email}",
-      subject: "You + Memknow = Genius",
-      text: message
+    if Rails.env.production?
+      RestClient.post ENV["API_URL"] + "/messages",
+        from: "study@memknow.com",
+        to: "#{user.email}",
+        subject: "You + Memknow = Genius",
+        text: message
+    end
   end
 
   def message
