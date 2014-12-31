@@ -58,7 +58,7 @@ class FlashcardsController < ApplicationController
 
   def add_to_scheduled_review(flashcard)
     if current_scheduled_review.flashcards == []
-      ScheduledReviewEmailWorker.perform_at(scheduled_review.scheduled_time, current_scheduled_review.id)
+      ScheduledReviewEmailWorker.perform_at(current_scheduled_review.scheduled_time, current_scheduled_review.id)
       current_scheduled_review.flashcards << flashcard
     else
       current_scheduled_review.flashcards << flashcard
