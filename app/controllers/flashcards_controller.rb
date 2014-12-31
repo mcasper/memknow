@@ -51,7 +51,7 @@ class FlashcardsController < ApplicationController
   end
 
   def create_scheduled_review
-    scheduled_review = current_user.scheduled_reviews.create(scheduled_date: Date.today)
+    scheduled_review = current_user.scheduled_reviews.create(scheduled_date: Date.tomorrow)
     scheduled_review.flashcards << @flashcard
     ScheduledReviewEmailWorker.perform_at(scheduled_review.scheduled_time, scheduled_review.id)
   end
