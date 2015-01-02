@@ -43,7 +43,7 @@ class FlashcardsController < ApplicationController
   private
 
   def create_or_add_to_scheduled_review(flashcard)
-    if current_scheduled_review
+    if current_user.scheduled_reviews.find_by(scheduled_date: Date.tomorrow)
       add_to_scheduled_review(flashcard)
     else
       create_scheduled_review
@@ -57,11 +57,13 @@ class FlashcardsController < ApplicationController
   end
 
   def add_to_scheduled_review(flashcard)
-    if current_scheduled_review.flashcards == []
-      ScheduledReviewEmailWorker.perform_at(current_scheduled_review.scheduled_time, current_scheduled_review.id)
-      current_scheduled_review.flashcards << flashcard
+    scheduled_review = current_user.scheduled_reviews.find_by(scheduled_date: Date.tomorrow)
+
+    if scheduled_review.flashcards == []
+      ScheduledReviewEmailWorker.perform_at(scheduled_review.scheduled_time, scheduled_review.id)
+      scheduled_review.flashcards << flashcard
     else
-      current_scheduled_review.flashcards << flashcard
+      scheduled_review.flashcards << flashcard
     end
   end
 
