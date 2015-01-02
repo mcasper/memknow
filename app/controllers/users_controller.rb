@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       WelcomeEmail.new(@user).welcome
       sign_in @user
       if params[:user][:flashcard]
-        scheduled_review = @user.scheduled_reviews.create(scheduled_date: Date.today)
+        scheduled_review = @user.scheduled_reviews.create(scheduled_date: Date.tomorrow)
         @user.flashcards.create(question: params[:user][:flashcard][:question], answer: params[:user][:flashcard][:answer], scheduled_review: scheduled_review)
       end
 
